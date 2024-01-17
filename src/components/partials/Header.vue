@@ -7,11 +7,22 @@ export default{
 
 <template>
 <header>
-  <nav>
-    <ul class="d-flex justify-content-center">
-      <li>link falso</li>
-      <li>link falso</li>
-      <li>link falso</li>
+  <nav class="d-flex justify-content-between ">
+    <ul class="d-flex">
+      <li>
+        <router-link :to="{name: 'home'}">Home</router-link>
+      </li>
+      <li>
+        <router-link :to="{name: 'search'}">Ricerca</router-link>
+      </li>
+    </ul>
+    <ul class="d-flex">
+      <li>
+        <a href="http://127.0.0.1:8000/login" target="_blank">Accedi</a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:8000/register" target="_blank">Registrati</a>
+      </li>
     </ul>
   </nav>
 </header>

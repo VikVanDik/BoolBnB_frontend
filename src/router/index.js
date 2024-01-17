@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 
 import Home from '../pages/Home.vue'
+import Search from '../pages/Search.vue'
 
 
 const router = createRouter({
@@ -12,7 +13,12 @@ const router = createRouter({
       path:'/',
       name:'home',
       component:Home,
-    }
+    },
+    {
+      path:'/search',
+      name:'search',
+      component:Search,
+    },
   ]
 });
 
