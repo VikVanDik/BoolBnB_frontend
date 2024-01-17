@@ -18,7 +18,7 @@ export default {
         <h5 class="card-title">{{apartment.title}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ apartment.address }}.</h6>
         <p v-html="apartment.description"></p>
-        <a href="#" class="btn btn-success">Info</a>
+        <router-link class="btn btn-outline-success my-2 my-sm-0" :to="{name:'ApartmentDetails',params:{slug:apartment.slug}}">Info</router-link>
     </div>
   </div>
 </template>
