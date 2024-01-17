@@ -36,22 +36,27 @@ export default{
 <template>
 
 <div class="container pt-80">
-  <h1 class="text-center">Home</h1>
+  <h1 class="text-center">BoolBnB</h1>
 
   <div class="container pt-80">
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0 row">
 
-      <input 
-        class="form-control mr-sm-2" 
-        type="search" 
-        placeholder="Search"
-        v-model="store.toSearch"
-        required>
+      <div class="col-11">
+        <input 
+          class="form-control mr-sm-2" 
+          type="search" 
+          placeholder="Search"
+          v-model="store.toSearch"
+          required>
+      </div>
 
-      <router-link  
-        class="btn btn-outline-success my-2 my-sm-0" 
-        :to="{name: 'search'}">
-          cerca</router-link>
+      <div class="col">
+        <router-link  
+          class="btn btn-outline-success my-2 my-sm-0" 
+          :to="{name: 'search'}">
+            cerca
+          </router-link>
+      </div>
     </form>
   </div>
 
