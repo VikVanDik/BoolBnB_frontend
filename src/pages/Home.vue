@@ -1,3 +1,4 @@
+
 <script>
 import axios from 'axios';
 import {store} from '../data/store';
@@ -16,28 +17,17 @@ export default{
     }
   },
   methods:{
-
-    // Serve a prendere api index
-    getApi(endpoint){
-      axios.get(endpoint)
-        .then(results => {
-          store.apartments = results.data;
-        })
-    },
-
-    // Mandiamo l'address in post
     sendAddress(address){
-      axios.post(store.apiUrl + 'research/'+ address)
-      .then(results => {
-          store.foundApartments = results.data;
-        });
-      store.toSearch = address;
-      console.log(store.foundApartments);
+      axios.post(store.apiUrl + 'research/' + address)
+        .then(results => {
+  
+          console.log(results.data);
+        })
     }
   },
-  mounted(){
-    this.getApi(store.apiUrl + 'apartments');
-  }
+  // mounted(){
+  //   this.getApi(store.apiUrl + 'apartments');
+  // }
 
 }
 
@@ -45,18 +35,15 @@ export default{
 
 <template>
 
-
+<div class="container pt-80">
   <h1 class="text-center">BoolBnB</h1>
 
   <div class="container pt-80">
-
-    <!-- FORM SEARCH-BAR -->
-    <form @submit.prevent="sendAddress(store.toSearch)" autocomplete="off" class="form-inline my-2 my-lg-0 row">
+    <form @submit.prevent="sendAddress(store.toSearch)" class="form-inline my-2 my-lg-0 row">
 
       <div class="col-11">
         <input 
           class="form-control mr-sm-2" 
-          id="address"
           type="search" 
           placeholder="Search"
           v-model="store.toSearch"
@@ -64,17 +51,14 @@ export default{
       </div>
 
       <div class="col">
-        <button  
-          type="submit"
-          class="btn btn-outline-success my-2 my-sm-0" >
+        <button type="submit"
+          class="btn btn-outline-success my-2 my-sm-0">
             cerca
           </button>
       </div>
     </form>
-
   </div>
 
-  <!-- Parte Sponsor -->
   <div class="mt-5">
     <h1 class="text-center">Appartamenti Sponsorizzati</h1>
 
@@ -85,7 +69,7 @@ export default{
     </div>
     
   </div>
-
+</div>
 
 </template>
 
