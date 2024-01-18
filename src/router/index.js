@@ -30,7 +30,7 @@ const router = createRouter({
 
     {
       path: '/:pathMatch(.*)*',
-      name: 'error-404',
+      name: 'Error404',
       component: Error404
     }
   ]

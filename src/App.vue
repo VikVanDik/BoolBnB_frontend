@@ -21,7 +21,10 @@ export default{
 
 <template>
   <Header />
-  <RouterView />
+  
+  <div class="container pt-80">
+    <RouterView />
+  </div>
 </template>
 
 <style lang="scss">
