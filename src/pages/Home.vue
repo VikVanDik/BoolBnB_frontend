@@ -35,7 +35,7 @@ export default{
 
 <template>
 
-<div class="container pt-80">
+
   <h1 class="text-center">BoolBnB</h1>
 
   <div class="container pt-80">
@@ -70,7 +70,7 @@ export default{
     </div>
     
   </div>
-</div>
+
 
 </template>
 

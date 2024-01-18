@@ -6,9 +6,9 @@ export default {
 
 
 <template>
-<div class="error-message">
-  <h1>ERRORE PAGINA NON</h1>
-</div>
+
+  <h1 class="text-center pt-80">ERRORE PAGINA NON TROVATA</h1>
+
 </template>
 
 <style lang="scss" scoped>

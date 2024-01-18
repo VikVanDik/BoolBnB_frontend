@@ -61,22 +61,22 @@ export default {
 </script>
 
 <template>
-  <div class="container pt-80">
 
-    <div class="mb-3">
-      <label for="formGroupExampleInput" class="form-label">Example label</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-    </div>
 
-    <div class="mt-5">
-      <h1 class="text-center">Appartamenti Trovati</h1>
-      <div class="row">
-        <div class="col-4 py-3" v-for="apartment in store.foundApartments" :key="apartment.id">
-          <Card :apartment="apartment"/>
-        </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Example label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+  </div>
+
+  <div class="mt-5">
+    <h1 class="text-center">Appartamenti Trovati</h1>
+    <div class="row">
+      <div class="col-4 py-3" v-for="apartment in store.foundApartments" :key="apartment.id">
+        <Card :apartment="apartment"/>
       </div>
     </div>
   </div>
+
 </template>
 
 <style  lang="scss" scoped>

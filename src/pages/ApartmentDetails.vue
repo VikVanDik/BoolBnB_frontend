@@ -40,9 +40,11 @@
 
 
 <template>
-  <div  class="apartment-card pt-80">
-    <h2>Title Apartment: {{ apartment.title }} </h2>
-  </div>
+
+    <div class="d-flex justify-content-center">
+      <h2>Title Apartment: {{ apartment.title }} </h2>
+    </div>
+
 </template>
 
 <style lang="scss" scoped>
