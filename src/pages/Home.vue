@@ -16,13 +16,23 @@ export default{
     }
   },
   methods:{
+
+    // Serve a prendere api index
     getApi(endpoint){
-      // this.isLoader = false,
       axios.get(endpoint)
         .then(results => {
-          // this.isLoader = true;
           store.apartments = results.data;
         })
+    },
+
+    // Mandiamo l'address in post
+    sendAddress(address){
+      axios.post(store.apiUrl + 'research/'+ address)
+      .then(results => {
+          store.foundApartments = results.data;
+        });
+      store.toSearch = address;
+      console.log(store.foundApartments);
     }
   },
   mounted(){
@@ -39,11 +49,14 @@ export default{
   <h1 class="text-center">BoolBnB</h1>
 
   <div class="container pt-80">
-    <form class="form-inline my-2 my-lg-0 row">
+
+    <!-- FORM SEARCH-BAR -->
+    <form @submit.prevent="sendAddress(store.toSearch)" autocomplete="off" class="form-inline my-2 my-lg-0 row">
 
       <div class="col-11">
         <input 
           class="form-control mr-sm-2" 
+          id="address"
           type="search" 
           placeholder="Search"
           v-model="store.toSearch"
@@ -51,15 +64,17 @@ export default{
       </div>
 
       <div class="col">
-        <router-link  
-          class="btn btn-outline-success my-2 my-sm-0" 
-          :to="{name: 'search'}">
+        <button  
+          type="submit"
+          class="btn btn-outline-success my-2 my-sm-0" >
             cerca
-          </router-link>
+          </button>
       </div>
     </form>
+
   </div>
 
+  <!-- Parte Sponsor -->
   <div class="mt-5">
     <h1 class="text-center">Appartamenti Sponsorizzati</h1>
 
