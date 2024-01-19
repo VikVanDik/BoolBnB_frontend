@@ -20,6 +20,7 @@ export default{
   },
   methods:{
     getApi(apiUrl){
+      store.toSearch ='';
       axios.get(apiUrl)
         .then(results => {
   
