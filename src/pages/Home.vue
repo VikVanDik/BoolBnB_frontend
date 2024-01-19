@@ -3,6 +3,7 @@
 import axios from 'axios';
 import {store} from '../data/store';
 import Card from '../components/partials/Card.vue';
+import {router} from '../router/index';
 export default{
   name: 'Home',
   components:{
@@ -14,20 +15,32 @@ export default{
   data(){
     return {
       store,
+      router,
     }
   },
   methods:{
+    getApi(apiUrl){
+      axios.get(apiUrl)
+        .then(results => {
+  
+          console.log(results.data);
+          store.apartments = results.data;
+        })
+      
+    },
     sendAddress(address){
       axios.post(store.apiUrl + 'research/' + address)
         .then(results => {
   
           console.log(results.data);
+          store.foundApartments = results.data;
+          this.$router.replace({ path: '/advanced-search' });
         })
     }
   },
-  // mounted(){
-  //   this.getApi(store.apiUrl + 'apartments');
-  // }
+  mounted(){
+    this.getApi(store.apiUrl + 'apartments');
+  }
 
 }
 
