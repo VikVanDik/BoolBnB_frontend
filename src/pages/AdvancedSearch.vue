@@ -11,15 +11,12 @@ export default {
     return {
       store,
       servicesClick : [],
-      stringService:'',
     }
   },
   methods:{
     getServices(apiUrl){
       axios.get(apiUrl)
         .then(results => {
-  
-          console.log(results.data);
           store.services = results.data;
         })
       
@@ -31,22 +28,27 @@ export default {
       }else{
         this.servicesClick.push(id);
       }
-      console.log(this.servicesClick);
-      this.stringService = this.servicesClick.join(',');
-      console.log(this.stringService);
       this.getAdvancedSearch();
     
     },
+
+    // getRadiuskm(){
+    //   lastKm = 0;
+    //   setInterval(function myTimer(){
+    //     this.getAdvancedSearch();
+    //   }, 1000)
+    // },
 
     getAdvancedSearch(){
       let params = {
         radius: store.radius,
         address: store.toSearch,
-        services: this.stringService,
+        services: this.servicesClick,
       };
       axios.get(store.apiUrl + 'advanced-search',{ params })
         .then(results => {
           console.log(results.data);
+          store.foundApartments = results.data;
         })
     }
   },
@@ -65,14 +67,16 @@ export default {
         type="text" 
         class="form-control" 
         id="formGroupExampleInput" 
-        v-model="store.toSearch">
+        v-model="store.toSearch"
+        @keyup.enter="getAdvancedSearch()">
     </div>
     <div class="m-3 offset-1 col-1 ">
       <input 
         type="number" 
         class="form-control" 
         id="formGroupExampleInput" 
-        v-model="store.radius">
+        v-model="store.radius"
+        @click="getAdvancedSearch()">
     </div>
   </div>
 
