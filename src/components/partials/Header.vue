@@ -12,9 +12,6 @@ export default{
       <li>
         <router-link :to="{name: 'home'}">Home</router-link>
       </li>
-      <li>
-        <router-link :to="{name: 'search'}">Ricerca</router-link>
-      </li>
     </ul>
     <ul class="d-flex">
       <li>

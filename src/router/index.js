@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 
 import Home from '../pages/Home.vue'
-import Search from '../pages/Search.vue'
+import AdvancedSearch from '../pages/AdvancedSearch.vue'
 import ApartmentDetails from '../pages/ApartmentDetails.vue';
 import Error404 from '../pages/Error404.vue'
 
@@ -17,9 +17,9 @@ const router = createRouter({
       component:Home,
     },
     {
-      path:'/search',
-      name:'search',
-      component:Search,
+      path:'/advanced-search',
+      name:'AdvancedSearch',
+      component:AdvancedSearch,
     },
 
     {
