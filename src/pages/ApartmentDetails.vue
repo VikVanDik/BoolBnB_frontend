@@ -50,6 +50,10 @@
           <!-- info appartamento -->
           <div>
             <h3>Info appartamento</h3>
+            <div>
+              <span class="badge text-bg-info me-2" v-for="service in apartment.services" :key="service.id">{{ service.name }}</span>
+            </div>
+
             <p><strong>Numero di stanze: </strong>{{apartment.room_number }}</p>
             <p><strong>Numero di letti: </strong>{{apartment.bed_number }}</p>
             <p><strong>Numero di bagni: </strong>{{apartment.bathroom_number }}</p>

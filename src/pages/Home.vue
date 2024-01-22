@@ -36,9 +36,20 @@ export default{
   
           console.log(results.data);
           store.foundApartments = results.data;
+          store.autocomplete = [];
           this.$router.replace({ path: '/advanced-search' });
         })
-    }
+    },
+    autocomplete(toSearch){
+      axios.get('https://api.tomtom.com/search/2/search/' + toSearch +
+                                '.json?key=mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX&language=it-IT&idxSets=Str&countrySet=IT&typeahead=true')
+        .then(results => {
+          store.autocomplete = [];
+          store.autocomplete = results.data.results;
+          console.log(store.autocomplete);
+        })
+      },
+  
   },
   mounted(){
     this.getApi(store.apiUrl + 'apartments');
@@ -66,6 +77,7 @@ export default{
             type="search" 
             placeholder="Cerca qui il tuo appartamento"
             v-model="store.toSearch"
+            @keyup="autocomplete(store.toSearch)"
             required>
           </div>
           <div class="col-1">
@@ -74,7 +86,9 @@ export default{
               cerca
             </button>
           </div>
-          
+          <div v-if="store.autocomplete.length > 0" class="results ">
+            <p class="list-style-none autocomplete" @click="store.toSearch = result.address.freeformAddress" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
+        </div>
         </form>
       </div>
     </div>
@@ -107,6 +121,22 @@ export default{
       background-color: rgba(0, 255, 255, 0);
       text-align: center;
       margin-bottom: 20px;
+    }
+
+  }
+
+  .results{
+    margin: 40px 0 0 15px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.309);
+    border-radius: 10px;
+    position: absolute;
+    width: 500px;
+    .autocomplete{
+      &:hover{
+        background-color: aqua;
+        cursor: pointer;
+      }
     }
 
   }
