@@ -6,7 +6,7 @@ export default{
 </script>
 
 <template>
-<header class="d-flex align-items-center justify-content-between ">
+<header class="d-flex align-items-center justify-content-between fixed-top">
   
   <!-- logo -->
   <div class="logo d-flex justify-content-center align-items-center">
@@ -41,10 +41,9 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-
   header{
     width: 100%;
-    height: 90px;
+    height: 80px;
     background-color: #efe9e2;
 
     .logo, .menu, .buttons{
