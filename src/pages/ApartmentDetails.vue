@@ -44,11 +44,26 @@
 
 
 <template>
-
-    <div class="d-flex justify-content-center">
-      <h2>Title Apartment: {{ apartment.title }} </h2>
+    <div class="container-fluid">
+      <div>
+        <h2>Title Apartment: {{ apartment.title }} </h2>
+      </div>
+      <div class="card-img w-100 overflow-hidden" >
+        <img :src="apartment.img" :alt="apartment.title">
+      </div>
+      <div>
+        <p><strong>Numero di stanze: </strong>{{apartment.room_number }}</p>
+        <p><strong>Numero di letti: </strong>{{apartment.bed_number }}</p>
+        <p><strong>Numero di bagni: </strong>{{apartment.bathroom_number }}</p>
+        <p><strong>Mq: </strong>{{apartment.sq_metres }}</p>
+      </div>
+      <div v-if = "apartment.description">
+        <h5>Descrizione:</h5>
+        <p  v-html="apartment.description"></p>
+      </div>
+      <h4 v-else>Nessuna descrizione</h4>
+      <FormMessage :apartment_id = "apartment.id"/>
     </div>
-    <FormMessage :apartment_id = "apartment.id"/>
 
 </template>
 
