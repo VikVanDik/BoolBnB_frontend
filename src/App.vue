@@ -1,10 +1,8 @@
 <script>
-import Header from "./components/partials/Header.vue"
 
 export default{
   name: 'App',
   components: {
-    Header,
   },
   data(){
     return {
@@ -20,11 +18,7 @@ export default{
 </script>
 
 <template>
-  <Header />
-  
-  <div class="container pt-80">
-    <RouterView />
-  </div>
+  <RouterView />
 </template>
 
 <style lang="scss">
