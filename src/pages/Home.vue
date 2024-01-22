@@ -41,14 +41,20 @@ export default{
         })
     },
     autocomplete(toSearch){
+      store.autocomplete = [];
       axios.get('https://api.tomtom.com/search/2/search/' + toSearch +
                                 '.json?key=mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX&language=it-IT&idxSets=Str&countrySet=IT&typeahead=true')
         .then(results => {
-          store.autocomplete = [];
+          
           store.autocomplete = results.data.results;
           console.log(store.autocomplete);
-        })
-      },
+       })
+    },
+    
+    emptyAutocomplete(value){
+      store.toSearch = value;
+      store.autocomplete = [];
+    }
   
   },
   mounted(){
@@ -87,7 +93,7 @@ export default{
             </button>
           </div>
           <div v-if="store.autocomplete.length > 0" class="results ">
-            <p class="list-style-none autocomplete" @click="store.toSearch = result.address.freeformAddress" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
+          <p class="list-style-none autocomplete p-1" @click="emptyAutocomplete(result.address.freeformAddress)" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
         </div>
         </form>
       </div>
@@ -132,6 +138,7 @@ export default{
     border-radius: 10px;
     position: absolute;
     width: 500px;
+    z-index: 500;
     .autocomplete{
       &:hover{
         background-color: aqua;
