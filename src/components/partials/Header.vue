@@ -6,47 +6,72 @@ export default{
 </script>
 
 <template>
-<header>
-  <nav class="d-flex justify-content-between ">
+<header class="d-flex align-items-center justify-content-between ">
+  
+  <!-- logo -->
+  <div class="logo d-flex justify-content-center align-items-center">
+    <img src="@/img/logo.png" alt="">
+    <span>Boolbnb</span>
+  </div>
+  
+  <!-- menu -->
+  <div class="menu d-flex justify-content-center align-items-center">
     <ul class="d-flex">
       <li>
         <router-link :to="{name: 'home'}">Home</router-link>
       </li>
     </ul>
-    <ul class="d-flex">
+  </div>
+  
+  <!-- button -->
+  <div class="buttons d-flex justify-content-center align-items-center">
+    <ul class="d-flex justify-content-between">
       <li>
-        <a href="http://127.0.0.1:8000/login" target="_blank">Accedi</a>
+        <a href="http://127.0.0.1:8000/login" target="_blank"><i class="fa-solid fa-right-to-bracket fa-lg"></i></a>
       </li>
       <li>
-        <a href="http://127.0.0.1:8000/register" target="_blank">Registrati</a>
+        <a href="http://127.0.0.1:8000/register" target="_blank"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
       </li>
     </ul>
-  </nav>
+  </div>
+  
 </header>
 
 
 </template>
 
 <style lang="scss" scoped>
+
   header{
-    position: fixed;
     width: 100%;
-    background-color: #EC8F5E;
-    z-index: 999;
-    border-bottom: 1px solid #F1EB90;
+    height: 90px;
+    background-color: #efe9e2;
+
+    .logo, .menu, .buttons{
+      width: 200px;
+      height:100%;
+    }
+    img{
+      width: 80px;
+    }
+    span{
+      font-size: 30px;
+      font-weight: bold;
+      color: black;
+    }
     ul{
       list-style: none;
+      margin-bottom: 0px;
+      padding-left: 0px;
       li{
-        padding: 10px;
+        color: black;
+        padding-left: 15px;
         a{
           text-decoration: none;
-          color: #F1EB90; 
-          &:hover{
-            border-bottom: 1px solid #F1EB90;
-          }
+          color: black; 
+          width: 50px;
           &.active{
             border-bottom: 3px solid white;
-            color: white; 
           }
         }
       }
