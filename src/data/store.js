@@ -7,6 +7,7 @@ export const store = reactive({
   toSearch:'',
   radius:20,
   services: [],
+  autocomplete:[]
   // apiSearchStart:'https://api.tomtom.com/search/2/geocode/',
   // apiSearchEnd: '.json?countrySet=IT&key=mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX',
   // lat:'',
