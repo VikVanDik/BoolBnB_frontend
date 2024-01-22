@@ -141,7 +141,7 @@ export default {
     <div class="mt-5">
       <h1 class="text-center">{{store.foundApartments.length > 0  ? "Appartamenti trovati: "+ store.foundApartments.length  : 'Nessun appartamento trovato'}}</h1>
       
-        <div class="d-flex py-3" >
+        <div class="d-flex py-3 flex-wrap justify-content-center" >
           <Card v-for="apartment in store.foundApartments" :key="apartment.id" :apartment="apartment"/>
         </div>
     </div>
