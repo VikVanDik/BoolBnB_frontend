@@ -2,14 +2,13 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store';
-import Header from '@/components/partials/Header.vue';
+
 import Card from '../components/partials/Card.vue';
 import {router} from '../router/index';
 export default{
   name: 'Home',
   components:{
     Card,
-    Header
   },
   props:{
 
@@ -52,7 +51,7 @@ export default{
 <template>
 
   <div class="main-cn">
-    <Header/>
+    
 
     <!-- sfondo -->
     <div class="bg-container d-flex flex-column justify-content-center ">
