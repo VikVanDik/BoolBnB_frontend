@@ -52,6 +52,13 @@
         <img :src="apartment.img" :alt="apartment.title">
       </div>
       <div>
+        <h4>Servizi:</h4>
+        <span class="badge text-bg-info" v-for="service in apartment.services" :key="service.id">
+           {{ service.name }}
+        </span>
+               
+      </div>
+      <div>
         <p><strong>Numero di stanze: </strong>{{apartment.room_number }}</p>
         <p><strong>Numero di letti: </strong>{{apartment.bed_number }}</p>
         <p><strong>Numero di bagni: </strong>{{apartment.bathroom_number }}</p>
