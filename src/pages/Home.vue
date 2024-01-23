@@ -66,16 +66,15 @@ export default{
 </script>
 
 <template>
-
   <div class="main-cn">
     <!-- sfondo -->
-    <div class="bg-container d-flex flex-column justify-content-center ">
+    <div class="bg-container d-flex flex-column justify-content-center">
       <div class="title-container">
         <h1>Boolbnb</h1>
       </div>
 
     <!-- barra di ricerca -->
-      <div class="container d-flex justify-content-center">
+      <div class="container d-flex justify-content-center position-relative">
         <form @submit.prevent="sendAddress(store.toSearch)" class="form-inline row w-50">
           <div class="d-flex col-11">
             <input 
@@ -92,9 +91,9 @@ export default{
               cerca
             </button>
           </div>
-          <div v-if="store.autocomplete.length > 0" class="results ">
-          <p class="list-style-none autocomplete p-1" @click="emptyAutocomplete(result.address.freeformAddress)" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
-        </div>
+          <div v-if="store.autocomplete.length > 0" class="results position-absolute">
+            <p class="list-style-none autocomplete p-1" @click="emptyAutocomplete(result.address.freeformAddress)" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
+          </div>
         </form>
       </div>
     </div>
@@ -113,6 +112,7 @@ export default{
 <style lang="scss" scoped>
 
 .main-cn{
+  background-color: #fcfffd ;
   .bg-container{
     width: 100%;
     height: 700px;
@@ -136,7 +136,6 @@ export default{
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.309);
     border-radius: 10px;
-    position: absolute;
     width: 500px;
     z-index: 500;
     .autocomplete{

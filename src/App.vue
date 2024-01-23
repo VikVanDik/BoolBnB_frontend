@@ -22,9 +22,14 @@ export default{
 
 <template>
   <Header/>
-  <RouterView />
+  <div class="scroll-view overflow-auto ">
+    <RouterView />
+  </div>
 </template>
 
 <style lang="scss">
+  .scroll-view{
+    height: calc(100vh - 80px);
 
+  }
 </style>
