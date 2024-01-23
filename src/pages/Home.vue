@@ -81,7 +81,7 @@ export default{
             <input 
             class="form-control"
             type="search" 
-            placeholder="Cerca qui il tuo appartamento"
+            placeholder="Cerca destinazione"
             v-model="store.toSearch"
             @keyup="autocomplete(store.toSearch)"
             required>
