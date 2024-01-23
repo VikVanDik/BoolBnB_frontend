@@ -107,7 +107,7 @@ export default {
   
                 <!-- select room -->
                 <div class="fw-bold my-2">
-                  <i class="fa-solid fa-door-open me-3"></i>
+                  <i class="fa-solid fa-door-closed me-3"></i>
                   <label>Seleziona numero di stanze</label>
                 <select @change="getAdvancedSearch()" v-model="this.rooms" class="form-select " aria-label="Default select example">
                   <option value="1">1</option>

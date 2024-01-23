@@ -19,10 +19,10 @@ export default {
     </div>
     <div class="card-body">
       <div class="card-title">
-        <h5>{{apartment.title}}</h5>
+        <h4>{{apartment.title}}</h4>
       </div>
-      <div class="card-text">
-        <h6>{{ apartment.address }}.</h6>
+      <div class="card-subtitle text-secondary">
+        <span>{{ apartment.address }}.</span>
       </div>
 
       <div v-if="!apartment.distance">
@@ -30,14 +30,14 @@ export default {
 
       <div v-else>
 
-        <div class="card-text" v-if = "apartment.distance > 1" >
-          <i class="fa-solid fa-map-location-dot"></i>
+        <div class="card-subtitle text-secondary" v-if = "apartment.distance > 1" >
+          <i class="fa-solid fa-map-location-dot text-primary"></i>
           <span class="ps-2"> {{ parseFloat(apartment.distance).toFixed(2) }} km</span>
         </div>
   
-        <div class="card-text" v-else>
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="fs-6">Si trova a meno di un km dalla destinazione scelta</span>
+        <div class=" card-subtitle text-secondary" v-else>
+          <i class="fa-solid fa-location-dot text-danger"></i>
+          <span class="ps-2">A meno di 1 km</span>
         </div>
 
       </div>
@@ -46,8 +46,13 @@ export default {
         <p v-html="apartment.description"></p>
       </div>
       <div class="card-text">
-        <p><strong>Numero di stanze: </strong>{{apartment.room_number }}</p>
-        <p><strong>Numero di letti: </strong>{{apartment.bed_number }}</p>
+        <span class="me-2">
+          <i class="fa-solid fa-door-closed me-1"></i>{{apartment.room_number }}
+
+        </span>
+        <span>
+          <i class="fa-solid fa-bed me-1"></i>{{apartment.bed_number }}
+        </span>
       </div>
 
         <router-link class="btn btn-primary" :to="{name:'ApartmentDetails',params:{slug:apartment.slug}}">
