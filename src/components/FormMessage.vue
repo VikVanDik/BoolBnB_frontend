@@ -54,17 +54,17 @@ export default {
   <div  v-if="!success" class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-danger">Invia il messaggio</h5>
+        <h5 class="modal-title text-primary">Invia il messaggio</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     <div class="modal-body">
       <div>
-        <label for="email" ><strong class="text-danger">Email</strong></label>
+        <label for="email" ><strong class="text-primary">Email</strong></label>
         <input v-model="sender_email" type="text" id="email" name="email" >
         <p class="error-msg" v-for="(error,index) in errors.sender_email" :key="index.error">{{ error }}</p>
       </div>
       <div>
-        <label for="message" ><strong class="text-danger">Messaggio</strong> </label>
+        <label for="message" ><strong class="text-primary">Messaggio</strong> </label>
         <textarea v-model="text" id="message" name="message" ></textarea>
         <p class="error-msg" v-for="(error,index) in errors.text" :key="index.error">{{ error }}</p>
       </div>
@@ -75,7 +75,7 @@ export default {
   <div class="sended modal-dialog modal-dialog-centered" v-else>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-danger">Messaggio inviato con successo!</h5>
+        <h5 class="modal-title text-primary">Messaggio inviato con successo!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>                                
     </div>
@@ -83,7 +83,7 @@ export default {
 </form>
 
 
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#invisible-form">Invia Messaggio</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#invisible-form">Invia Messaggio</button>
 </template>
 
 

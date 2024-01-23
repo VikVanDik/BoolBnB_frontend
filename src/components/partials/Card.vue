@@ -4,8 +4,11 @@ export default {
   props: {
     apartment:Object,
   },
-
 }
+
+
+
+
 </script>
 
 
@@ -21,9 +24,32 @@ export default {
       <div class="card-text">
         <h6>{{ apartment.address }}.</h6>
       </div>
+
+      <div v-if="!apartment.distance">
+      </div>
+
+      <div v-else>
+
+        <div class="card-text" v-if = "apartment.distance > 1" >
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span class="ps-2"> {{ parseFloat(apartment.distance).toFixed(2) }} km</span>
+        </div>
+  
+        <div class="card-text" v-else>
+          <i class="fa-solid fa-location-dot"></i>
+          <span class="fs-6">Si trova a meno di un km dalla destinazione scelta</span>
+        </div>
+
+      </div>
+
       <div class="card-text">
         <p v-html="apartment.description"></p>
       </div>
+      <div class="card-text">
+        <p><strong>Numero di stanze: </strong>{{apartment.room_number }}</p>
+        <p><strong>Numero di letti: </strong>{{apartment.bed_number }}</p>
+      </div>
+
         <router-link class="btn btn-primary" :to="{name:'ApartmentDetails',params:{slug:apartment.slug}}">
           Info
         </router-link>
