@@ -6,7 +6,7 @@ export default{
 </script>
 
 <template>
-<footer class="mt-5">
+<footer>
   <div class="p-4 text-secondary">
     <h3 class="text-primary">Boolbnb info</h3>
 
