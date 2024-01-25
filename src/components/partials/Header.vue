@@ -6,12 +6,12 @@ export default{
 </script>
 
 <template>
-<header class="d-flex align-items-center justify-content-between px-4">
+<header class="d-flex align-items-center justify-content-between px-4 fixed-top ">
   
   <!-- logo -->
   <div class="logo d-flex justify-content-center align-items-center">
-    <img src="@/img/logo.png" alt="">
-    <span>Boolbnb</span>
+    <img src="@/img/logo.png" alt="logo">
+    <span class="ms-1">Boolbnb</span>
   </div>
   
   <!-- menu -->
@@ -23,9 +23,8 @@ export default{
     </ul>
   </div>
   
-  <!-- button -->
-  <div class="d-flex justify-content-between align-items-center">
-
+  <!-- section to register profile and login -->
+  <div class="d-flex justify-content-end align-items-center profile">
     <ul class="d-flex justify-content-between align-items-center">
       <li class="text-center pe-2">
         <a href="http://127.0.0.1:8000/login" target="_blank">
@@ -39,7 +38,6 @@ export default{
           <p class=" m-0 fs-6">Registrati</p>
         </a>
       </li>
-      
     </ul>
   </div>
   
@@ -54,12 +52,12 @@ export default{
     height: 80px;
     background-color: #d5c7bc;
 
-    .logo, .menu, .buttons{
-      width: 150px;
+    .logo, .menu, .profile{
+      width: 170px;
       height: 100%;
     }
     img{
-      width: 70px;
+      width: 100%;
     }
     span{
       font-size: 30px;
