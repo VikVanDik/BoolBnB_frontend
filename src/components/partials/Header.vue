@@ -63,7 +63,7 @@ export default{
       height: 100%;
     }
     img{
-      width: 100%;
+      height: 60px;
     }
     span{
       font-size: 30px;
