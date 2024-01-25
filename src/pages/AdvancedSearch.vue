@@ -75,21 +75,21 @@ export default {
             class="form-control" 
             id="formGroupExampleInput" 
             v-model="store.toSearch"
-            @keyup.enter="getAdvancedSearch()">
+            @keyup.enter="getAdvancedSearch()"/>
         </div>
 
         <!-- Button trigger offcanvas filter -->
-        <div class="col-1">
-          <span class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <div class="btn btn-success col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <i class="fa-solid fa-filter me-2"></i>
             <span>Filtri</span>
-          </span>
+          </div>
   
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel">Filtri</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            
             <div class="offcanvas-body">
               <!-- select KM -->
               <div class="fw-bold my-2">
@@ -106,9 +106,9 @@ export default {
                 <!-- /select KM -->
   
                 <!-- select room -->
-                <div class="fw-bold my-2">
-                  <i class="fa-solid fa-door-closed me-3"></i>
-                  <label>Seleziona numero di stanze</label>
+              <div class="fw-bold my-2">
+                <i class="fa-solid fa-door-closed me-3"></i>
+                <label>Seleziona numero di stanze</label>
                 <select @change="getAdvancedSearch()" v-model="this.rooms" class="form-select " aria-label="Default select example">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -134,7 +134,7 @@ export default {
                 </div>
                 <!-- /select bed -->             
                 
-                 <!-- Servizi -->
+                <!-- Servizi -->
                 <div class="mb-5">
                   <ul class="d-flex flex-column">
                     <li v-for="service in store.services" :key="service.id" class="my-2">
@@ -153,7 +153,6 @@ export default {
               </div>
             </div>
           </div>
-        </div>
       </div>
     
       <div class="mt-5 " :class="store.foundApartments.length > 0? '': 'containter-card-searched'">
