@@ -133,7 +133,7 @@ export default {
               cerca
             </button>
           </div>
-          <div v-if="store.autocomplete.length > 0" class="results position-absolute h-100">
+          <div v-if="store.autocomplete.length > 0" class="results position-absolute">
             <p class="list-style-none autocomplete p-1" @click="emptyAutocomplete(result.address.freeformAddress)" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
           </div>
         </form>

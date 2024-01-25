@@ -24,9 +24,9 @@ export default{
 <template>
   <div class="total-view">
     <Header/>
-    <div class="scroll-view h-100">
+    <main class="scroll-view">
       <RouterView class="h-100"/>
-    </div>
+    </main>
     <Footer/>
   </div>
 </template>
@@ -34,9 +34,9 @@ export default{
 <style lang="scss">
 .total-view{
   height: 100%;
+  width: 100%;
 }
 .scroll-view{
-  height: 100%;
   margin-top: 80px;
 }
 </style>
