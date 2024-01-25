@@ -5,12 +5,7 @@ export default {
     apartment:Object,
   },
 }
-
-
-
-
 </script>
-
 
 <template>
   <div class="card w-25 m-3">

@@ -6,7 +6,7 @@ export default{
 </script>
 
 <template>
-<footer>
+<footer class="mt-5">
   <div class="p-4 text-secondary">
     <h3 class="text-primary">Boolbnb info</h3>
 
@@ -57,7 +57,6 @@ export default{
 
 <style lang="scss" scoped>
  footer {
-  height: 100%;
   width: 100%;
   background-color: black;
  }

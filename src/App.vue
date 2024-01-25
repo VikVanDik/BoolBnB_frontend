@@ -24,7 +24,7 @@ export default{
 <template>
   <div class="total-view">
     <Header/>
-    <div class="scroll-view">
+    <div class="scroll-view h-100">
       <RouterView class="h-100"/>
     </div>
     <Footer/>

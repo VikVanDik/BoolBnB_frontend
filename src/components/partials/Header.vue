@@ -11,14 +11,20 @@ export default{
   <!-- logo -->
   <div class="logo d-flex justify-content-center align-items-center">
     <img src="@/img/logo.png" alt="logo">
-    <span class="ms-1">Boolbnb</span>
+    <span class="ms-1 text-white">Boolbnb</span>
   </div>
   
   <!-- menu -->
-  <div class="menu d-flex justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center">
     <ul class="d-flex">
       <li>
-        <router-link class="fs-5" :to="{name: 'home'}">Home</router-link>
+        <router-link class="fs-5 text-white mx-2" :to="{name: 'home'}">Home</router-link>
+      </li>
+      <li>
+        <router-link class="fs-5 text-white mx-2" :to="{name: 'infoBoolbnb'}">Chi siamo</router-link>
+      </li>
+      <li>
+        <router-link class="fs-5 text-white mx-2" :to="{name: 'contacts'}">Contatti</router-link>
       </li>
     </ul>
   </div>
@@ -28,14 +34,14 @@ export default{
     <ul class="d-flex justify-content-between align-items-center">
       <li class="text-center pe-2">
         <a href="http://127.0.0.1:8000/login" target="_blank">
-          <i class="fa-solid fa-right-to-bracket fa-lg"></i>
-          <p class=" m-0 fs-6">Accedi</p>
+          <i class="fa-solid fa-right-to-bracket fa-lg text-white"></i>
+          <p class=" m-0 fs-6 text-white">Accedi</p>
         </a>
       </li>
       <li class="text-center">
         <a href="http://127.0.0.1:8000/register" target="_blank">
-          <i class="fa-solid fa-pen-to-square fa-lg"></i>
-          <p class=" m-0 fs-6">Registrati</p>
+          <i class="fa-solid fa-pen-to-square fa-lg text-white"></i>
+          <p class=" m-0 fs-6 text-white">Registrati</p>
         </a>
       </li>
     </ul>
@@ -50,7 +56,7 @@ export default{
   header{
     width: 100%;
     height: 80px;
-    background-color: #d5c7bc;
+    background-color: #4b82c0;
 
     .logo, .menu, .profile{
       width: 170px;
@@ -62,7 +68,6 @@ export default{
     span{
       font-size: 30px;
       font-weight: bold;
-      color: black;
     }
     ul{
       list-style: none;
@@ -75,7 +80,7 @@ export default{
           color: black; 
           width: 50px;
           &.active{
-            border-bottom: 3px solid rgb(37, 143, 175);
+            border-bottom: 3px solid rgb(169, 230, 248);
           }
         
         }
