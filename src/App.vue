@@ -1,11 +1,12 @@
 <script>
 
 import Header from '@/components/partials/Header.vue';
-
+import Footer from './components/partials/Footer.vue'
 export default{
   name: 'App',
   components: {
-    Header
+    Header,
+    Footer
   },
   data(){
     return {
@@ -21,15 +22,21 @@ export default{
 </script>
 
 <template>
-  <Header/>
-  <div class="scroll-view overflow-auto ">
-    <RouterView />
+  <div class="total-view">
+    <Header/>
+    <div class="scroll-view">
+      <RouterView class="h-100"/>
+    </div>
+    <Footer/>
   </div>
 </template>
 
 <style lang="scss">
-  .scroll-view{
-    height: calc(100vh - 80px);
-
-  }
+.total-view{
+  height: 100%;
+}
+.scroll-view{
+  height: 100%;
+  margin-top: 80px;
+}
 </style>

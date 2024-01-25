@@ -156,7 +156,7 @@ export default {
         </div>
       </div>
     
-      <div class="mt-5">
+      <div class="mt-5 " :class="store.foundApartments.length > 0? '': 'containter-card-searched'">
         <h1 class="text-center">{{store.foundApartments.length > 0  ? "Appartamenti trovati: "+ store.foundApartments.length  : 'Nessun appartamento trovato'}}</h1>
         
           <div class="d-flex py-3 flex-wrap justify-content-center" >
@@ -167,5 +167,7 @@ export default {
 </template>
 
 <style>
-
+  .containter-card-searched{
+    height: 400px;
+  }
 </style>
