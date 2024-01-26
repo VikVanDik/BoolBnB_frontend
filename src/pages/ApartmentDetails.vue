@@ -12,6 +12,8 @@
       return {
         slug:'', 
         apartment:{},
+        user_name:'',
+        user_surname:''
       }
     },
     methods: {
@@ -24,6 +26,8 @@
           this.$router.push({ name: 'Error404' })
         }
         this.apartment = response.data.apartment;
+        this.user_name = response.data.apartment.user.name;
+        this.user_surname = response.data.apartment.user.surname;
         
         })},
     },
@@ -49,11 +53,10 @@
           
           <!-- info appartamento -->
           <div>
-            <h3>Info appartamento</h3>
+            <h3>Info appartamento di : {{  this.user_name + ' ' + this.user_surname }}</h3>
             <div>
               <span class="badge text-bg-info me-2" v-for="service in apartment.services" :key="service.id">{{ service.name }}</span>
             </div>
-
             <p><strong>Numero di stanze: </strong>{{apartment.room_number }}</p>
             <p><strong>Numero di letti: </strong>{{apartment.bed_number }}</p>
             <p><strong>Numero di bagni: </strong>{{apartment.bathroom_number }}</p>

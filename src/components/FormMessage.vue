@@ -23,6 +23,10 @@ export default {
 
   },
   methods: {
+    empyMessageForm(){
+      this.success = false;
+      this.text = ''
+    },
     sendForm(){
       const data = {
         sender_email:this.sender_email,
@@ -76,7 +80,7 @@ export default {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-primary">Messaggio inviato con successo!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button @click="empyMessageForm()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>                                
     </div>
   </div>
