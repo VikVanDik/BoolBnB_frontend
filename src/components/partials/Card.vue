@@ -25,14 +25,14 @@ export default {
 
       <div v-else>
 
+        <div class=" card-subtitle text-secondary" :class="apartment.distance > 1 ? 'd-none' : ''">
+          <i class="fa-solid fa-location-dot text-danger"></i>
+          <span class="ps-2">A meno di 1 km</span>
+        </div>
+
         <div class="card-subtitle text-secondary" v-if = "apartment.distance > 1" >
           <i class="fa-solid fa-map-location-dot text-primary"></i>
           <span class="ps-2"> {{ parseFloat(apartment.distance).toFixed(2) }} km</span>
-        </div>
-  
-        <div class=" card-subtitle text-secondary" v-else>
-          <i class="fa-solid fa-location-dot text-danger"></i>
-          <span class="ps-2">A meno di 1 km</span>
         </div>
 
       </div>
