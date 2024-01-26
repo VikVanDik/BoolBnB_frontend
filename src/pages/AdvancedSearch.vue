@@ -1,12 +1,14 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store';
+import Loader from '../components/partials/Loader.vue';
 import Card from '../components/partials/Card.vue';
 
 export default {
   name:'AdvancedSearch',
   components:{
     Card,
+    Loader
   },
   data(){
     return {
@@ -48,6 +50,8 @@ export default {
     // },
 
     getAdvancedSearch(){
+      // loader false
+      store.isLoading=false;
       let params = {
         radius: store.radius,
         address: store.toSearch,
@@ -57,13 +61,15 @@ export default {
       };
       axios.get(store.apiUrl + 'advanced-search',{ params })
         .then(results => {
+          // loader true
+          store.isLoading=true;
           console.log(results.data);
           store.foundApartments = results.data;
         })
     }
   },
   mounted(){
-
+    store.isLoading=true;
     let slider = document.getElementById("km");
     let output = document.getElementById("label-km");
     console.log(slider);
@@ -171,8 +177,8 @@ export default {
             </div>
           </div>
       </div>
-    
-      <div class="mt-5 " :class="Object.keys(store.foundApartments).length > 0? '': 'containter-card-searched'">
+      <Loader v-if="!store.isLoading" />
+      <div v-else class="mt-5 " :class="Object.keys(store.foundApartments).length > 0? '': 'containter-card-searched'">
         <h1 class="text-center">{{Object.keys(store.foundApartments).length > 0  ? "Appartamenti trovati: "+ Object.keys(store.foundApartments).length  : 'Nessun appartamento trovato'}}</h1>
         
           <div class="d-flex py-3 flex-wrap justify-content-center" >
