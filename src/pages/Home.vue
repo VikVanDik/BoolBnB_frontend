@@ -149,7 +149,7 @@ export default {
 
             <ul class='slider'>
 
-                <li v-for="(apartment, index) in store.apartments" class='item' v-bind:style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
+                <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' v-bind:style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
                   <div class='content'>
                     <h2 class='title'>{{apartment.title}}</h2>
                     <p class='description' v-html="apartment.description"></p>
@@ -164,8 +164,8 @@ export default {
               </li>
             </ul>
             <nav class='nav position-absolute'>
-              <ion-icon class='btn prev ' name="arrow-back-outline"></ion-icon>
-              <ion-icon class='btn next ' name="arrow-forward-outline"></ion-icon>
+              <ion-icon class='btn prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left"></i></ion-icon>
+              <ion-icon class='btn next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right"></i></ion-icon>
             </nav>
           </div>
           <!-- <Card v-for="apartment in store.apartments" :key="apartment.id" :apartment="apartment"/> -->

@@ -152,7 +152,11 @@ export default {
                     <legend class="checkbox-group-legend">Choose your favorites</legend>
                     <div v-for="service in store.services" :key="service.id" class="checkbox">
                       <label class="checkbox-wrapper">
-                        <input type="checkbox" class="checkbox-input" />
+                        <input type="checkbox" class="checkbox-input" 
+                        :name="service.id"
+                        :id="service.id"
+                        :value="service.id"
+                        @click="getSelectionServices(service.id)"/>
                         <span class="checkbox-tile" :class="service.name.length > 11 ? 'scroll-container' : ''">
                           <span class="checkbox-icon">
                             <img :src="service.icon" class="mini-img" alt="">
