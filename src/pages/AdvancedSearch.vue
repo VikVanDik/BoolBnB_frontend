@@ -17,6 +17,11 @@ export default {
     }
   },
   methods:{
+
+    getPhoto(){   
+      return 'http://127.0.0.1:8000/storage/icons/';
+    },
+
     getServices(apiUrl){
       axios.get(apiUrl)
         .then(results => {
@@ -75,7 +80,7 @@ export default {
 </script>
 
 <template>
-    <div class="container pt-2">  
+    <div class="container bg-img pt-2">  
       <!-- Indirizzo e chilometri -->
       <!-- indirizzo -->
       <div class="d-flex row mb-3">
@@ -103,18 +108,12 @@ export default {
             
             <div class="offcanvas-body">
               <!-- select KM -->
-              <div class="fw-bold my-2">
-                <div>Distanza</div>
-                <i class="fa-solid fa-car-side me-3"></i>
+              <div class="fw-bold my-2 w-100">
+                <div>
+                  <i class="fa-solid fa-car-side me-3"></i>
+                  Distanza <label class="mb-1 ms-2 float-end" id="label-km">km</label>  
+                </div>
                 <input type="range" value="15" id="km" name="km" v-model="store.radius" @change="getAdvancedSearch()" min="1" max="30">
-                <label class="mb-1 ms-2" id="label-km">km</label>
-                <!-- <select @change="getAdvancedSearch()" v-model="store.radius" class="form-select " aria-label="Default select example">
-                  <option value="1">1 Km</option>
-                  <option value="2">2 Km</option>
-                  <option value="5">5 Km</option>
-                  <option value="20">20 Km</option>
-                  <option value="50">50 Km</option>
-                </select> -->
               </div> 
                 <!-- /select KM -->
   
@@ -149,27 +148,28 @@ export default {
                 
                 <!-- Servizi -->
                 <div class="mb-5">
-                  <ul class="d-flex flex-column">
-                    <li v-for="service in store.services" :key="service.id" class="my-2">
-                      <input 
-                        type="checkbox"
-                        class="btn-check"
-                        :name="service.id"
-                        :id="service.id"
-                        :value="service.id"
-                        @click="getSelectionServices(service.id)"
-                      >
-                      <label class="btn btn-outline-primary " :for="service.id">{{service.name}}</label>
-                    </li>
-                  </ul>
+                  <fieldset class="checkbox-group">
+                    <legend class="checkbox-group-legend">Choose your favorites</legend>
+                    <div v-for="service in store.services" :key="service.id" class="checkbox">
+                      <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" />
+                        <span class="checkbox-tile" :class="service.name.length > 11 ? 'scroll-container' : ''">
+                          <span class="checkbox-icon">
+                            <img :src="service.icon" class="mini-img" alt="">
+                          </span>
+                          <span class="checkbox-label" :class="service.name.length > 11 ? 'scroll-text' : ''">{{service.name}}</span>
+                        </span>
+                      </label>
+                    </div>
+                  </fieldset>
                 </div>
               </div>
             </div>
           </div>
       </div>
     
-      <div class="mt-5 " :class="store.foundApartments.length > 0? '': 'containter-card-searched'">
-        <h1 class="text-center">{{store.foundApartments.length > 0  ? "Appartamenti trovati: "+ store.foundApartments.length  : 'Nessun appartamento trovato'}}</h1>
+      <div class="mt-5 " :class="Object.keys(store.foundApartments).length > 0? '': 'containter-card-searched'">
+        <h1 class="text-center">{{Object.keys(store.foundApartments).length > 0  ? "Appartamenti trovati: "+ Object.keys(store.foundApartments).length  : 'Nessun appartamento trovato'}}</h1>
         
           <div class="d-flex py-3 flex-wrap justify-content-center" >
             <Card v-for="apartment in store.foundApartments" :key="apartment.id" :apartment="apartment"/>
@@ -178,22 +178,194 @@ export default {
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .containter-card-searched{
     height: 400px;
   }
 
-
+  .bg-img{
+    background-image: url();
+  }
 
   #km{
-    width: 200px;
+    width: 100%;
   }
-  .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+
+  .debug{
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.425);
+  }
+
+  // STILE TESTO SCORREVOLE
+
+  .scroll-container {
+  border: 3px solid black;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
+.scroll-text {
+  width: 100px;
+  -moz-transform: translateX(80%);
+  -webkit-transform: translateX(80%);
+  transform: translateX(80%);
+  
+  -moz-animation: my-animation 5s linear infinite;
+  -webkit-animation: my-animation 5s linear infinite;
+  animation: my-animation 5s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateX(85%); }
+  to { -moz-transform: translateX(-85%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(85%); }
+  to { -webkit-transform: translateX(-85%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(85%);
+    -webkit-transform: translateX(85%);
+    transform: translateX(85%);
+  }
+  to {
+    -moz-transform: translateX(-85%);
+    -webkit-transform: translateX(-85%);
+    transform: translateX(-85%);
+  }
+}
+
+  /* STILE MINICARDS SERVIZI */
+
+  .mini-img {
+    width: 60%;
+  }
+
+  .checkbox-group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 600px;
+	user-select: none;
+	& > * {
+		margin: .5rem 0.5rem;
+	}
+}
+
+
+
+.checkbox-group-legend {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #9c9c9c;
+	text-align: center;
+	line-height: 1.125;
+	margin-bottom: 1.25rem;
+}
+
+.checkbox-input {
+	// Code to hide the input
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+
+	&:checked + .checkbox-tile {
+		border-color: #2260ff;
+		box-shadow: 0 5px 10px rgba(#000, 0.1);
+		color: #2260ff;
+		&:before {
+			transform: scale(1);
+			opacity: 1;
+			background-color: #2260ff;
+			border-color: #2260ff;
+		}
+		
+		.checkbox-icon, .checkbox-label {
+			color: #2260ff;
+		}
+	}
+	
+	&:focus + .checkbox-tile {
+		border-color: #2260ff;
+		box-shadow: 0 5px 10px rgba(#000, 0.1), 0 0 0 4px #b5c9fc;
+		&:before {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+}
+
+.checkbox-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	border-radius: 0.5rem;
+	border: 2px solid #b5bfd9;
+	background-color: #fff;
+	box-shadow: 0 5px 10px rgba(#000, 0.1);
+	transition: 0.15s ease;
+	cursor: pointer;
+	position: relative;
+
+	&:before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 1.25rem;
+		height: 1.25rem;
+		border: 2px solid #b5bfd9;
+		background-color: #fff;
+		border-radius: 50%;
+		top: 0.25rem;
+		left: 0.25rem;
+		opacity: 0;
+		transform: scale(0);
+		transition: 0.25s ease;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+		background-size: 12px;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+	}
+
+	&:hover {
+		border-color: #2260ff;
+		&:before {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+}
+
+.checkbox-icon {
+	transition: .375s ease;
+	color: #494949;
+	img {
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+.checkbox-label {
+	color: #707070;
+	transition: .375s ease;
+	text-align: center;
+  font-size: 11px;
+}
+
+
 </style>
