@@ -5,7 +5,7 @@ export const store = reactive({
   apartments: [],
   foundApartments: [],
   toSearch:'',
-  radius:20,
+  radius:15,
   services: [],
   autocomplete:[]
   // apiSearchStart:'https://api.tomtom.com/search/2/geocode/',

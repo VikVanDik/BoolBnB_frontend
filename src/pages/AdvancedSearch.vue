@@ -58,6 +58,17 @@ export default {
     }
   },
   mounted(){
+
+    let slider = document.getElementById("km");
+    let output = document.getElementById("label-km");
+    console.log(slider);
+    console.log(output);
+    output.innerHTML = slider.value + 'Km'
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+      output.innerHTML = this.value + 'Km';
+    }
     this.getServices(store.apiUrl + 'services');
   }
 }
@@ -93,15 +104,17 @@ export default {
             <div class="offcanvas-body">
               <!-- select KM -->
               <div class="fw-bold my-2">
+                <div>Distanza</div>
                 <i class="fa-solid fa-car-side me-3"></i>
-                <label class="mb-1">Chilometri</label>
-                <select @change="getAdvancedSearch()" v-model="store.radius" class="form-select " aria-label="Default select example">
+                <input type="range" value="15" id="km" name="km" v-model="store.radius" @change="getAdvancedSearch()" min="1" max="30">
+                <label class="mb-1 ms-2" id="label-km">km</label>
+                <!-- <select @change="getAdvancedSearch()" v-model="store.radius" class="form-select " aria-label="Default select example">
                   <option value="1">1 Km</option>
                   <option value="2">2 Km</option>
                   <option value="5">5 Km</option>
                   <option value="20">20 Km</option>
                   <option value="50">50 Km</option>
-                </select>
+                </select> -->
               </div> 
                 <!-- /select KM -->
   
@@ -165,8 +178,22 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
   .containter-card-searched{
     height: 400px;
   }
+
+
+
+  #km{
+    width: 200px;
+  }
+  .slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
 </style>
