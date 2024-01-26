@@ -9,10 +9,12 @@ export default{
 <header class="d-flex align-items-center justify-content-between px-4 fixed-top ">
   
   <!-- logo -->
-  <div class="logo d-flex justify-content-center align-items-center">
-    <img src="@/img/logo.png" alt="logo">
-    <span class="ms-1 text-white">Boolbnb</span>
-  </div>
+  <router-link class="fs-5 router mx-2" :to="{name: 'home'}">
+    <div class="logo d-flex justify-content-center align-items-center">
+      <img src="@/img/logo.png" alt="logo">
+      <span class="ms-1 text-white">Boolbnb</span>
+    </div>
+  </router-link>
   
   <!-- menu -->
   <div class="d-flex justify-content-center align-items-center">
@@ -58,6 +60,9 @@ export default{
     height: 80px;
     background-color: #4b82c0;
 
+    .router {
+      text-decoration: none;
+    }
     .logo, .menu, .profile{
       width: 170px;
       height: 100%;
