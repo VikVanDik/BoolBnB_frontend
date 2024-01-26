@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store';
-
+import Loader from '../components/partials/Loader.vue';
 import Card from '../components/partials/Card.vue';
 import { router } from '../router/index';
 
@@ -9,31 +9,39 @@ export default {
   name: 'Home',
   components: {
     Card,
+    Loader
   },
   data() {
     return {
       store,
       router,
       show: true,
+  
     };
   },
   methods: {
     getApi(apiUrl) {
       store.toSearch = '';
+      store.isLoading = false;
       axios.get(apiUrl)
         .then(results => {
+          store.isLoading = true;
           console.log(results.data);
           store.apartments = results.data;
         });
     },
 
     sendAddress(address) {
+        store.isLoading = false;
+
       axios.post(store.apiUrl + 'research/' + address)
         .then(results => {
+          store.isLoading = true;
           console.log(results.data);
           store.foundApartments = results.data;
           store.autocomplete = [];
           this.$router.replace({ path: '/advanced-search' });
+          store.isLoading = false;
         });
     },
 
@@ -142,14 +150,17 @@ export default {
 
     <!-- appartamenti sponsorizzati -->
     <div class="container h-500-px p-5">
+      
         <h2 id="sponsor-title" class="text-center">Appartamenti Sponsorizzati</h2>
-        <div class="d-flex w-100 flex-wrap justify-content-center">
+        <Loader v-if="!store.isLoading" />
+
+        <div v-else class="d-flex w-100 flex-wrap justify-content-center">
 
           <div class="position-relative">
 
             <ul class='slider'>
 
-                <li v-for="(apartment, index) in store.apartments" class='item' v-bind:style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
+                <li v-for="(apartment, index) in store.apartments" class='item' :key="index" :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
                   <div class='content'>
                     <h2 class='title'>{{apartment.title}}</h2>
                     <p class='description' v-html="apartment.description"></p>
