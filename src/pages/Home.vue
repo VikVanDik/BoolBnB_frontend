@@ -162,7 +162,7 @@ export default {
             <ul class='slider'>
               <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
 
-                <div class='content'>
+                <div class='content pe-3'>
                   <h2 class='title'>{{apartment.title}}</h2>
                   <p class='description' v-html="apartment.description"></p>
                   <a :href="'get-apartment/' +  apartment.slug">
@@ -170,8 +170,10 @@ export default {
                       Vai all'appartamento
                     </button>
                   </a>
-                  <span class="p-1 box-sha fs-6"><i class="fa-solid fa-door-closed me-1"></i> {{ apartment.room_number }}</span>
-                  <span class="p-1 box-sha fs-6"><i class="fa-solid fa-bed me-1"></i>{{ apartment.bed_number }}</span>
+                  <div class="p-1 box-sha fs-6 d-block">
+                    <i class="fa-solid fa-door-closed me-1"></i> {{ apartment.room_number }}
+                    <i class="fa-solid fa-bed me-1"></i>{{ apartment.bed_number }}
+                  </div>
                 </div>
               </li>
             </ul>
@@ -189,7 +191,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .autocomplete{
   padding: 0;
 }
@@ -211,7 +212,6 @@ export default {
       text-align: center;
       margin-bottom: 20px;
     }
-
   }
 
   .box-sha {
@@ -235,29 +235,20 @@ export default {
         cursor: pointer;
       }
     }
-
   }
-
 }
-
-
-.h-500-px {
-  height: 500px;
-}
-// STILE SLIDER
-
-.btn-pos {
-  position: absolute;
-}
+// STILE SLIDE
 
 .slider {
   position: relative;
-  height: 400px;
-  width: 1000px;
+  height: 50vh;
+  width: 60vw;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .item {
-  width: 200px;
-  height: 300px;
+  width: 140px;
+  height: 250px;
   list-style-type: none;
   position: absolute;
   top: 50%;
@@ -280,22 +271,22 @@ export default {
     opacity: 1;
   }
 
-  &:nth-child(3) { left: 50%; }
-  &:nth-child(4) { left: calc(50% + 220px); }
+  &:nth-child(3) { left: 60%; }
+  &:nth-child(4) { left: calc(50% + 250px); }
   &:nth-child(5) { left: calc(50% + 440px); }
   &:nth-child(6) { left: calc(50% + 660px); opacity: 0; }
 }
 
 .content {
-  width: min(30vw,400px);
+  width: min(50%,400px);
   position: absolute;
   top: 50%;
   left: 3rem;
   transform: translateY(-50%);
   font: 400 0.85rem helvetica,sans-serif;
   color: white;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
-  opacity: 0;
+  text-shadow: 0 3px 8px rgb(0, 0, 0);
+  opacity: 0.2;
   display: none;
 
   & .title {
@@ -311,12 +302,16 @@ export default {
 
   & button {
     width: fit-content;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.473);
     color: white;
-    border: 2px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.342);
     border-radius: 0.25rem;
     padding: 0.75rem;
     cursor: pointer;
+    &:hover{
+      background-color: rgba(146, 146, 146, 0.658);
+      color: rgb(0, 0, 0);
+    }
   }
 }
 
@@ -340,56 +335,58 @@ export default {
   position: absolute;
   bottom: 2rem;
   left: 50%;
+  bottom: 20px;
   transform: translateX(-50%);
   z-index: 5;
   user-select: none;
 
   & .btn {
     background-color: rgba(255,255,255,0.5);
+    display: block;
     color: rgba(0,0,0,0.7);
     border: 2px solid rgba(0,0,0,0.6);
-    margin: 0 0.25rem;
-    padding: 0.75rem;
-    border-radius: 50%;
+    margin: 0.5px;
+    padding:0.75px;
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(145, 145, 145, 0.329);
     }
   }
 }
 
 @media (width > 650px) and (width < 900px) {
-  .content {
-    & .title        { font-size: 1rem; }
-    & .description  { font-size: 0.7rem; }
-    & button        { font-size: 0.7rem; }
-  }
-  .item {
-    width: 160px;
-    height: 270px;
-
-    &:nth-child(3) { left: 50%; }
-    &:nth-child(4) { left: calc(50% + 170px); }
-    &:nth-child(5) { left: calc(50% + 340px); }
-    &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
-  }
+    .content {
+      & .title        { font-size: 1rem; }
+      & .description  { font-size: 0.7rem; }
+      & button        { font-size: 0.7rem; }
+    }
+    .item {
+      width: 120px;
+      height: 220px;
+  
+      &:nth-child(3) { left: 60%; }
+      &:nth-child(4) { left: calc(50% + 170px); }
+      &:nth-child(5) { left: calc(50% + 340px); }
+      &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
+    }
 }
-
 @media (width < 650px) {
-  .content {
-    & .title        { font-size: 0.9rem; }
-    & .description  { font-size: 0.65rem; }
-    & button        { font-size: 0.7rem; }
-  }
-  .item {
-    width: 130px;
-    height: 220px;
 
-    &:nth-child(3) { left: 50%; }
-    &:nth-child(4) { left: calc(50% + 140px); }
-    &:nth-child(5) { left: calc(50% + 280px); }
-    &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
-  }
+    .content {
+
+      & .title        { font-size: 1rem; }
+      & .description  { font-size: 0.75rem; }
+      & button        { font-size: 0.8rem; }
+    }
+    .item {
+      width: 90px;
+      height: 200px;
+  
+      &:nth-child(3) { left: 69%; }
+      &:nth-child(4) { left: calc(50% + 170px); }
+      &:nth-child(5) { left: calc(50% + 200px); }
+      &:nth-child(6) { left: calc(50% + 400px); opacity: 0; }
+    }
 }
 </style>
