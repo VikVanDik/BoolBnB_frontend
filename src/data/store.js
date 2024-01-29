@@ -15,7 +15,7 @@ export const store = reactive({
   // lon:'',
   team:[
     {
-      name: 'Asia',
+      name: 'Asia Viscardi',
       contacts:[
         {
           mail:'asia.viscardii@gmail.com',
@@ -25,17 +25,17 @@ export const store = reactive({
       ]
     },
     {
-      name: 'Alessandro',
+      name: 'Alessandro Cingolani',
       contacts:[
         {
-          mail:'@gmail.com',
-          linkedIn:'https://www.linkedin.com/in/',
-          gitHub:'https://github.com/'
+          mail:'cingolani.alessandro93@gmail.com',
+          linkedIn:'www.linkedin.com/in/alessandro-cingolani-3134b72a8',
+          gitHub:'https://github.com/AlessandroCingolani'
         }
       ]
     },
     {
-      name: 'Argel',
+      name: 'Argel Dela Cruz',
       contacts:[
         {
           mail:'argeldelacruz86@gmail.com',
@@ -45,17 +45,17 @@ export const store = reactive({
       ]
     },
     {
-      name: 'Emanuele',
+      name: 'Emanuele Di Leo',
       contacts:[
         {
-          mail:'@gmail.com',
-          linkedIn:'https://www.linkedin.com/in/',
-          gitHub:'https://github.com/'
+          mail:'dileoemanuele11@gmail.com',
+          linkedIn:'https://www.linkedin.com/in/emanuele-di-leo-142645203/',
+          gitHub:'https://github.com/EmanueleDiLeo'
         }
       ]
     },
     {
-      name: 'Vincenzo',
+      name: 'Vincenzo Li Calzi',
       contacts:[
         {
           mail:'a95vlc17@gmail.com',
@@ -65,12 +65,12 @@ export const store = reactive({
       ]
     },
     {
-      name: 'Carmelo',
+      name: 'Carmelo Cammalleri',
       contacts:[
         {
-          mail:'@gmail.com',
-          linkedIn:'https://www.linkedin.com/in/',
-          gitHub:'https://github.com/'
+          mail:'carmecamma1995@gmail.com',
+          linkedIn:'https://www.linkedin.com/in/carmelo-cammalleri-9404a92a5/',
+          gitHub:'https://github.com/carmelocammalleri'
         }
       ]
     },
