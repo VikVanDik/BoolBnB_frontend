@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store';
+import AutoComplete from '../components/partials/AutoComplete.vue';
 import Loader from '../components/partials/Loader.vue';
 import Card from '../components/partials/Card.vue';
 
@@ -8,7 +9,8 @@ export default {
   name:'AdvancedSearch',
   components:{
     Card,
-    Loader
+    Loader,
+    AutoComplete,
   },
   data(){
     return {
@@ -51,6 +53,7 @@ export default {
 
     getAdvancedSearch(){
       // loader false
+      store.autocomplete = [];
       store.isLoading=false;
       let params = {
         radius: store.radius,
@@ -65,8 +68,17 @@ export default {
           store.isLoading=true;
           console.log(results.data);
           store.foundApartments = results.data;
+          store.autocomplete = [];
         })
-    }
+    },
+    autocomplete(toSearch) {
+      store.autocomplete = [];
+      axios.get(`https://api.tomtom.com/search/2/search/${toSearch}.json?key=mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX&language=it-IT&idxSets=Str&countrySet=IT&typeahead=true`)
+        .then(results => {
+          store.autocomplete = results.data.results;
+          console.log(store.autocomplete);
+        });
+    },
   },
   mounted(){
     store.isLoading=true;
@@ -97,8 +109,13 @@ export default {
             class="form-control" 
             id="formGroupExampleInput" 
             v-model="store.toSearch"
+            @keyup="autocomplete(store.toSearch)"
             @keyup.enter="getAdvancedSearch()"/>
+            <!-- Autocomplete -->
+
+            <AutoComplete v-if="store.isLoading" class="advanced-search"/>
         </div>
+        
 
         <!-- Button trigger offcanvas filter -->
           <div class="btn btn-success col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
@@ -189,7 +206,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-  .containter-card-searched{
+.advanced-search {
+  margin: 0;
+  
+}
+
+.containter-card-searched{
     height: 400px;
   }
 
