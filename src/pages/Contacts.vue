@@ -15,85 +15,28 @@ export default {
 
 
 <template>
-  <h1 class="text-center py-5">Contatti</h1>
-  <!-- <div class="container text-center pb-3">
-    <div class="row row-sm d-flex justify-content-between ">
-      <div 
-        v-for="(member, index) in store.team"
-        :key="index"
-        class="col-4 mt-3 pb-4 align-content-center "
-      >
-        <h4>{{member.name}}</h4>
-        <ul 
-          class=" list-unstyled"
-          v-for="(contact, index) in member.contacts"
-          :key="index"
-        >
-          
-          <li class="d-flex ">
-            <p>E-mail:</p>
-            <a href="#" class="text-decoration-none "> {{contact.mail?contact.mail:'-'}}</a>
-          </li>
-          <li class="d-flex ">
-            <p>GitHub:</p>
-            <a href="#" class="text-decoration-none "> {{contact.gitHub?contact.gitHub:'-'}}</a>
-          </li>
-          <li class="d-flex align-content-center ">
-            <p>LinkedIn:</p>
-            <a href="#" class="text-decoration-none text-sm"> {{contact.linkedIn?contact.linkedIn:'-'}}</a>
-          </li>
-     
-        </ul>
-      </div>
 
-    </div>
-  </div> -->
-  <!-- <div class="container">
-    <ul class="cards">
-      <li
-        v-for="(member, index) in store.team"
-        :key="index"
-      >
-        <img src="" alt="">
-        <div class="details">
-          <span class="name">{{ member.name }}</span>
-          <a class="mail">{{ member.contacts[0].mail }}</a>
-          <a class="github">{{ member.contacts[0].gitHub }}</a>
-          <a class="linkedin">{{ member.contacts[0].linkedIn }}</a>
-        </div>
-      </li>
-
-    </ul>
-  </div> -->
-
-  
 <div class="container">
-  <ul class="cards">
+  <h1 class="text-center py-5">Contatti</h1>
+  <div class="row">
 
-    <li class="col-4"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=1cd7edb2ed25c1de4908db807e545988&amp;w=150&amp;h=150"/>
-      <div class="details"><span class="name">Emilia Jacobs</span><span class="title">UI/UX Designer</span><a class="phone" href="tel:123-456-789">123-456-789</a><a class="email" href="mailto:emilia.jacobs@email.com">emilia.jacobs@email.com</a></div>
-    </li>
+    <div 
+      class="col-4 custom-card"
+      v-for="(member, index) in store.team"
+      :key="index"
+    >
+      <div class="img-holder">
+        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=1cd7edb2ed25c1de4908db807e545988&amp;w=200&amp;h=200"/>
+      </div>
+      <div class="details">
+        <span class="name">{{member.name}}</span>
+        <a class="mail">{{ member.contacts[0].mail }}</a>
+        <a class="git" href="tel:123-456-789">{{ member.contacts[0].gitHub }}</a>
+        <a class="linkedin" href="mailto:emilia.jacobs@email.com">{{ member.contacts[0].linkedIn }}</a>
+      </div>
+    </div>
 
-    <li class="col-4"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=1cd7edb2ed25c1de4908db807e545988&amp;w=150&amp;h=150"/>
-      <div class="details"><span class="name">Emilia Jacobs</span><span class="title">UI/UX Designer</span><a class="phone" href="tel:123-456-789">123-456-789</a><a class="email" href="mailto:emilia.jacobs@email.com">emilia.jacobs@email.com</a></div>
-    </li>
-
-    <li class="col-4"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=1cd7edb2ed25c1de4908db807e545988&amp;w=150&amp;h=150"/>
-      <div class="details"><span class="name">Emilia Jacobs</span><span class="title">UI/UX Designer</span><a class="phone" href="tel:123-456-789">123-456-789</a><a class="email" href="mailto:emilia.jacobs@email.com">emilia.jacobs@email.com</a></div>
-    </li>
-
-    <li class="col-4"><img src="https://images.unsplash.com/photo-1499057625772-bafa601ee80c?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=136e035a7d5740f54f2acaa940c07f0b&amp;w=150&amp;h=150"/>
-      <div class="details"><span class="name">Tim Pawson</span><span class="title">Project Manager</span><a class="phone" href="tel:123-456-789">123-456-789</a><a class="email" href="mailto:tim.pawson@email.com">tim.pawson@email.com</a></div>
-    </li>
-
-    <li class="col-4"><img src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=5ba0eb3fce2a3b77dd7d18bf1615ddee&amp;w=150&amp;h=150"/>
-      <div class="details"><span class="name">Amanda Tyler</span><span class="title">Frontend Developer</span><a class="phone" href="tel:123-456-789">123-456-789</a><a class="email" href="mailto:amanda.tyler@email.com">amanda.tyler@email.com</a></div>
-    </li>
-
-    <li class="col-4"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-0.3.5&amp;q=85&amp;fm=jpg&amp;crop=faces&amp;fit=crop&amp;cs=srgb&amp;s=952f907e565bc7c4c7eb53497510863f&amp;w=150&amp;h=150"/>
-      <div class="details"><span class="name">Thomas Jones</span><span class="title">Fullstack Developer</span><a class="phone" href="tel:123-456-789">123-456-789</a><a class="email" href="mailto:tom.jones@email.com">tom.jones@email.com</a></div>
-    </li>
-  </ul>
+  </div>
 </div>
 
 
@@ -124,8 +67,10 @@ export default {
   src: url(https://fonts.gstatic.com/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVc.ttf) format('truetype');
 }
 
-.container {
-  padding: 15px;
+.container-custom {
+  width: 90%;
+  margin: 0 auto;
+
 
 }
 .clearfix {
@@ -133,104 +78,107 @@ export default {
   display: block;
   clear: both;
 }
-.cards {
+
+.custom-card {
   display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  
-}
-.cards li {
-  
-  // display: inline-block;
-  // margin: 10px;
-  // padding: 10px;
+  border: 1px solid black;
+  margin: 35px 15px;
+  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 25px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  font-size: 0.9em;
+  font-size: 1rem;
   transition: all 0.2s ease-in-out;
   text-align: center;
+  width: 31%;
+  cursor: pointer;
 }
-.cards li:after,
-.cards li:before {
+.custom-card li:after,
+.custom-card li:before {
   content: '';
   display: block;
   clear: both;
 }
-.cards li img {
+.img-holder {
   display: inline-block;
-  width: 100%;
-  height: auto;
-  max-width: 150px;
+  width: 110px;
+  height: 110px;
+  border: 1px solid black;
+  overflow: hidden;
+  max-width: 110px;
   float: left;
   border-radius: 50%;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   transition: all 0.5s ease-in-out;
+  img {
+    width: 100%;
+    object-fit: cover;
+    
+  }
 }
-.cards li .details {
+.details {
   float: left;
   text-align: left;
   transition: all 0.5s ease-in-out;
   text-shadow: 1px 1px rgba(0, 0, 0, 0);
-  min-width: 250px;
+  max-width: 250px;
+
 }
-.cards li .details > span,
-.cards li .details > a {
+.details > span,
+.details > a {
   display: block;
-  padding: 0 15px 0 35px;
-  margin-bottom: 15px;
+  padding: 0 0 0 10px;
+  margin-bottom: 5px;
   text-decoration: none;
   position: relative;
+  font-size: 0.75rem;
 }
-.cards li .details > span:before,
-.cards li .details > a:before {
+.details > span:before,
+.details > a:before {
   display: inline-block;
   font: normal normal normal 13px/1 FontAwesome;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-right: 15px;
+  margin-right: 5px;
   width: 15px;
   text-align: center;
   color: #444;
 }
-.cards li .details a {
+.details a {
   color: #57893c;
   transition: color 0.5s ease-in-out;
 }
-.cards li .details a:hover,
-.cards li .details a:focus {
+.details a:hover,
+.details a:focus {
   color: #97c77e;
   transition: color 0.5s ease-in-out;
 }
-.cards li .details .name {
+.details .name {
   font-weight: 600;
 }
-.cards li .details .name:before {
+.name:before {
   content: "\f2c0";
 }
-.cards li .details .title:before {
-  content: "\f2c1";
+.mail:before {
+  content: "\f0e0";
 }
-.cards li .details .phone:before {
-  content: "\f095";
+.git:before {
+  content: "\f09b";
 }
-.cards li .details .email:before {
-  content: "\f003";
+.linkedin:before {
+  content: "\f08c";
 }
-.cards li:hover {
+.custom-card:hover {
   background: rgba(235, 237, 189, 0.5);
   transition: all 0.2s ease-in-out;
   transform: scale(1.03);
 }
-.cards li:hover img {
+.custom-card:hover img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   transition: all 0.4s ease-in-out;
 }
-.cards li:hover .details {
+.custom-card:hover .details {
   transition: all 0.5s ease-in-out;
   text-shadow: 1px 1px #dfe295;
 }
