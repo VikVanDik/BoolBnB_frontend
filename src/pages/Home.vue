@@ -3,15 +3,13 @@ import axios from 'axios';
 import { store } from '../data/store';
 import Loader from '../components/partials/Loader.vue';
 import Card from '../components/partials/Card.vue';
-import AutoComplete from '../components/partials/AutoComplete.vue';
 import { router } from '../router/index';
 
 export default {
   name: 'Home',
   components: {
     Card,
-    Loader,
-    AutoComplete
+    Loader
   },
   data() {
     return {
@@ -56,7 +54,10 @@ export default {
         });
     },
     
-   
+    emptyAutocomplete(value) {
+      store.toSearch = value;
+      store.autocomplete = [];
+    },
     
     dNoneTime() {
       let timeout;
@@ -89,6 +90,17 @@ export default {
   },
 
   mounted() {
+
+    if (localStorage.getItem('reloaded')) {
+        // The page was just reloaded. Clear the value from local storage
+        // so that it will reload the next time this page is visited.
+        localStorage.removeItem('reloaded');
+    } else {
+        // Set a flag so that we know not to reload the page twice.
+        localStorage.setItem('reloaded', '1');
+        location.reload();
+    }
+
     this.getApi(store.apiUrl + 'apartments');
     
     const slider = document.querySelector('.slider');
@@ -140,8 +152,9 @@ export default {
               cerca
             </button>
           </div>
-          
-          <AutoComplete class="autocomplete" />
+          <div v-if="store.autocomplete.length > 0" class="results position-absolute">
+            <p class="list-style-none autocomplete p-1" @click="emptyAutocomplete(result.address.freeformAddress)" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
+          </div>
         </form>
       </div>
     </div>
@@ -150,16 +163,13 @@ export default {
     <div class="container h-500-px p-5">
       
         <h2 id="sponsor-title" class="text-center">Appartamenti Sponsorizzati</h2>
-        <Loader v-if="!store.isLoading" />
+        
 
-        <div v-else class="d-flex w-100 flex-wrap justify-content-center">
+        <div class="d-flex w-100 flex-wrap justify-content-center">
 
           <div class="position-relative">
 
             <ul class='slider'>
-
-
-              
 
                 <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
 
@@ -177,8 +187,8 @@ export default {
               </li>
             </ul>
             <nav class='nav position-absolute'>
-              <ion-icon class='btn prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left"></i></ion-icon>
-              <ion-icon class='btn next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right"></i></ion-icon>
+              <ion-icon class='btn prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left prev"></i></ion-icon>
+              <ion-icon class='btn next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right next"></i></ion-icon>
             </nav>
           </div>
           <!-- <Card v-for="apartment in store.apartments" :key="apartment.id" :apartment="apartment"/> -->
@@ -190,9 +200,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.autocomplete{
-  padding: 0;
-}
+
 
 .main-cn{
   background-color: #fcfffd ;
@@ -218,23 +226,25 @@ export default {
     color: #4b82c0;
 }  
 
-  
+  .fa-solid{
+    padding: 3px;
+  }
 
-  // .results{
-  //   margin: 40px 0 0 15px;
-  //   background-color: white;
-  //   border: 1px solid rgba(0, 0, 0, 0.309);
-  //   border-radius: 10px;
-  //   width: 500px;
-  //   z-index: 500;
-  //   .autocomplete{
-  //     &:hover{
-  //       background-color: aqua;
-  //       cursor: pointer;
-  //     }
-  //   }
+  .results{
+    margin: 40px 0 0 15px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.309);
+    border-radius: 10px;
+    width: 500px;
+    z-index: 500;
+    .autocomplete{
+      &:hover{
+        background-color: aqua;
+        cursor: pointer;
+      }
+    }
 
-  // }
+  }
 
 }
 
