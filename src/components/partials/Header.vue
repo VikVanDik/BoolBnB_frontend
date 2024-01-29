@@ -17,13 +17,14 @@ export default{
   </router-link>
   
   <div class="d-md-none">
-    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
       <i class="fa-solid fa-bars text-white"></i>
     </button>
 
-    <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color: #4b82c0;">
+
+    <div class="offcanvas offcanvas-top h-50" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="background-color: #4b82c0;">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title text-white" id="offcanvasRightLabel">BoolMenu</h5>
+        <h5 class="offcanvas-title text-white" id="offcanvasTopLabel">BoolMenu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
 
@@ -84,6 +85,7 @@ export default{
     width: 100%;
     height: 80px;
     background-color: #4b82c0;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.384);
 
     .router {
       text-decoration: none;
