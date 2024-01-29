@@ -22,7 +22,7 @@ export default {
   },
   methods:{
 
-    getPhoto(){   
+    getPhoto(){
       return 'http://127.0.0.1:8000/storage/icons/';
     },
 
@@ -31,7 +31,7 @@ export default {
         .then(results => {
           store.services = results.data;
         })
-      
+
     },
     getSelectionServices(id){
       console.log(id);
@@ -41,7 +41,7 @@ export default {
         this.servicesClick.push(id);
       }
       this.getAdvancedSearch();
-    
+
     },
 
     // getRadiuskm(){
@@ -69,6 +69,10 @@ export default {
           console.log(results.data);
           store.foundApartments = results.data;
           store.autocomplete = [];
+        })
+        .catch(err => {
+          store.isLoading=true;
+          store.foundApartments = [];
         })
     },
     autocomplete(toSearch) {
@@ -98,48 +102,49 @@ export default {
 </script>
 
 <template>
-    <div class="container bg-img pt-2">  
+    <div class="container bg-img pt-2">
       <!-- Indirizzo e chilometri -->
       <!-- indirizzo -->
       <div class="d-flex row mb-3">
         <span class="fw-bold mb-1">Inserisci indirizzo</span>
         <div class="col-11 fw-bold">
-          <input 
-            type="text" 
-            class="form-control" 
-            id="formGroupExampleInput" 
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput"
             v-model="store.toSearch"
             @keyup="autocomplete(store.toSearch)"
+            autocomplete="off"
             @keyup.enter="getAdvancedSearch()"/>
             <!-- Autocomplete -->
 
             <AutoComplete v-if="store.isLoading" class="advanced-search"/>
         </div>
-        
+
 
         <!-- Button trigger offcanvas filter -->
           <div class="btn btn-success col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <i class="fa-solid fa-filter me-2"></i>
             <span>Filtri</span>
           </div>
-  
+
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel">Filtri</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            
+
             <div class="offcanvas-body">
               <!-- select KM -->
               <div class="fw-bold my-2 w-100">
                 <div>
                   <i class="fa-solid fa-car-side me-3"></i>
-                  Distanza <label class="mb-1 ms-2 float-end" id="label-km">km</label>  
+                  Distanza <label class="mb-1 ms-2 float-end" id="label-km">km</label>
                 </div>
                 <input type="range" value="15" id="km" name="km" v-model="store.radius" @change="getAdvancedSearch()" min="1" max="30">
-              </div> 
+              </div>
                 <!-- /select KM -->
-  
+
                 <!-- select room -->
               <div class="fw-bold my-2">
                 <i class="fa-solid fa-door-closed me-3"></i>
@@ -153,8 +158,8 @@ export default {
                   <option value="6">6+</option>
                 </select>
                 <!-- /select room -->
-  
-                <!-- select bed -->             
+
+                <!-- select bed -->
                 <div class="fw-bold my-2">
                   <i class="fa-solid fa-bed me-3"></i>
                   <label>Seleziona numero di letti</label>
@@ -167,15 +172,15 @@ export default {
                     <option value="6">6+</option>
                   </select>
                 </div>
-                <!-- /select bed -->             
-                
+                <!-- /select bed -->
+
                 <!-- Servizi -->
                 <div class="mb-5">
                   <fieldset class="checkbox-group">
                     <legend class="checkbox-group-legend">Choose your favorites</legend>
                     <div v-for="service in store.services" :key="service.id" class="checkbox">
                       <label class="checkbox-wrapper">
-                        <input type="checkbox" class="checkbox-input" 
+                        <input type="checkbox" class="checkbox-input"
                         :name="service.id"
                         :id="service.id"
                         :value="service.id"
@@ -197,7 +202,7 @@ export default {
       <Loader v-if="!store.isLoading" />
       <div v-else class="mt-5 " :class="Object.keys(store.foundApartments).length > 0? '': 'containter-card-searched'">
         <h1 class="text-center">{{Object.keys(store.foundApartments).length > 0  ? "Appartamenti trovati: "+ Object.keys(store.foundApartments).length  : 'Nessun appartamento trovato'}}</h1>
-        
+
           <div class="d-flex py-3 flex-wrap justify-content-center" >
             <Card v-for="apartment in store.foundApartments" :key="apartment.id" :apartment="apartment"/>
           </div>
@@ -208,7 +213,7 @@ export default {
 <style lang="scss" scoped>
 .advanced-search {
   margin: 0;
-  
+
 }
 
 .containter-card-searched{
@@ -241,7 +246,7 @@ export default {
   -moz-transform: translateX(80%);
   -webkit-transform: translateX(80%);
   transform: translateX(80%);
-  
+
   -moz-animation: my-animation 5s linear infinite;
   -webkit-animation: my-animation 5s linear infinite;
   animation: my-animation 5s linear infinite;
@@ -323,12 +328,12 @@ export default {
 			background-color: #2260ff;
 			border-color: #2260ff;
 		}
-		
+
 		.checkbox-icon, .checkbox-label {
 			color: #2260ff;
 		}
 	}
-	
+
 	&:focus + .checkbox-tile {
 		border-color: #2260ff;
 		box-shadow: 0 5px 10px rgba(#000, 0.1), 0 0 0 4px #b5c9fc;
