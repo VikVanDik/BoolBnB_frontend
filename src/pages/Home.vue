@@ -134,20 +134,19 @@ export default {
 
     <!-- barra di ricerca -->
       <div class="container d-flex justify-content-center position-relative">
-        <form @submit.prevent="sendAddress(store.toSearch)" class="form-inline row w-50">
-          <div class="d-flex col-11">
+        <form @submit.prevent="sendAddress(store.toSearch)" class="form-inline row w-75">
+          <div class="d-flex col">
             <input 
-            class="form-control"
+            class="form-control w-100"
             type="search" 
             placeholder="Cerca destinazione"
             v-model="store.toSearch"
             @keyup="autocomplete(store.toSearch)"
             required>
-          </div>
-          <div class="col-1">
             <button type="submit"
             class="btn btn-primary">
-              cerca
+              <span class="d-none d-md-block"> cerca</span>
+              <i class="fa-solid fa-magnifying-glass d-block d-md-none"></i>
             </button>
           </div>
           <AutoComplete class="autocomplete"/>
@@ -156,32 +155,27 @@ export default {
     </div>
 
     <!-- appartamenti sponsorizzati -->
-    <div class="container h-500-px p-5">
-      
+    <div class="container p-5"> 
         <h2 id="sponsor-title" class="text-center">Appartamenti Sponsorizzati</h2>
-        
-
         <div class="d-flex w-100 flex-wrap justify-content-center">
-
           <div class="position-relative">
-
             <ul class='slider'>
+              <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
 
-                <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
-
-                  <div class='content'>
-                    <h2 class='title'>{{apartment.title}}</h2>
-                    <p class='description' v-html="apartment.description"></p>
-                    <a :href="'get-apartment/' +  apartment.slug">
-                      <button>
-                        Vai all'appartamento
-                      </button>
-                    </a>
-                    <span class="p-1 box-sha fs-6"><i class="fa-solid fa-door-closed me-1"></i> {{ apartment.room_number }}</span>
-                    <span class="p-1 box-sha fs-6"><i class="fa-solid fa-bed me-1"></i>{{ apartment.bed_number }}</span>
-                  </div>
+                <div class='content'>
+                  <h2 class='title'>{{apartment.title}}</h2>
+                  <p class='description' v-html="apartment.description"></p>
+                  <a :href="'get-apartment/' +  apartment.slug">
+                    <button>
+                      Vai all'appartamento
+                    </button>
+                  </a>
+                  <span class="p-1 box-sha fs-6"><i class="fa-solid fa-door-closed me-1"></i> {{ apartment.room_number }}</span>
+                  <span class="p-1 box-sha fs-6"><i class="fa-solid fa-bed me-1"></i>{{ apartment.bed_number }}</span>
+                </div>
               </li>
             </ul>
+
             <nav class='nav position-absolute'>
               <ion-icon class='btn prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left prev"></i></ion-icon>
               <ion-icon class='btn next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right next"></i></ion-icon>
@@ -233,7 +227,7 @@ export default {
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.309);
     border-radius: 10px;
-    width: 500px;
+    width: 40%;
     z-index: 500;
     .autocomplete{
       &:hover{

@@ -8,10 +8,10 @@ export default{
 <template>
 <footer>
   <div class="p-4 text-secondary">
-    <h3 class="text-primary">Boolbnb info</h3>
+    <h3 class="text-primary text-center pb-3 ">Boolbnb info</h3>
 
     <!-- section list footer -->
-    <div class="d-flex justify-content-between middle-section">
+    <div class="d-flex flex-column flex-sm-row justify-content-sm-between middle-section text-center text-sm-start">
       <div>
         <h5>Assistenza</h5>
         <ul class=" list-unstyled">
