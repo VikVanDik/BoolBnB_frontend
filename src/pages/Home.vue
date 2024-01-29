@@ -3,13 +3,15 @@ import axios from 'axios';
 import { store } from '../data/store';
 import Loader from '../components/partials/Loader.vue';
 import Card from '../components/partials/Card.vue';
+import AutoComplete from '../components/partials/AutoComplete.vue';
 import { router } from '../router/index';
 
 export default {
   name: 'Home',
   components: {
     Card,
-    Loader
+    Loader,
+    AutoComplete
   },
   data() {
     return {
@@ -54,10 +56,7 @@ export default {
         });
     },
     
-    emptyAutocomplete(value) {
-      store.toSearch = value;
-      store.autocomplete = [];
-    },
+   
     
     dNoneTime() {
       let timeout;
@@ -141,9 +140,8 @@ export default {
               cerca
             </button>
           </div>
-          <div v-if="store.autocomplete.length > 0" class="results position-absolute">
-            <p class="list-style-none autocomplete p-1" @click="emptyAutocomplete(result.address.freeformAddress)" v-for="(result,index) in store.autocomplete" :key="result+index">{{ result.address.freeformAddress }}</p>
-          </div>
+          
+          <AutoComplete class="autocomplete" />
         </form>
       </div>
     </div>
@@ -192,7 +190,9 @@ export default {
 
 <style lang="scss" scoped>
 
-
+.autocomplete{
+  padding: 0;
+}
 
 .main-cn{
   background-color: #fcfffd ;
@@ -220,21 +220,21 @@ export default {
 
   
 
-  .results{
-    margin: 40px 0 0 15px;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.309);
-    border-radius: 10px;
-    width: 500px;
-    z-index: 500;
-    .autocomplete{
-      &:hover{
-        background-color: aqua;
-        cursor: pointer;
-      }
-    }
+  // .results{
+  //   margin: 40px 0 0 15px;
+  //   background-color: white;
+  //   border: 1px solid rgba(0, 0, 0, 0.309);
+  //   border-radius: 10px;
+  //   width: 500px;
+  //   z-index: 500;
+  //   .autocomplete{
+  //     &:hover{
+  //       background-color: aqua;
+  //       cursor: pointer;
+  //     }
+  //   }
 
-  }
+  // }
 
 }
 
