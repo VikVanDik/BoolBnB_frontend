@@ -1,5 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
 
+$shadow: 0px 3px 10px rgba(0,0,0,.10);
+$box-padding: .8em;
+$color-primary: #f857a8;
+$color-secondary:#ff5858;
+$color-neutral-lt: #fff;
+$color-neutral-med: #ddd;
+$headings-font: 'Saira Semi Condensed', sans-serif;
+@mixin icon-box{
+  background-color: #fff;
+  box-shadow: $shadow;
+  padding: $box-padding;
+}
+
+@mixin no-space{
+  padding: 0px;
+  margin: 0px;
+}
+
+@mixin main-gradient{
+  background: $color-primary;
+  background: -webkit-linear-gradient(45deg, $color-primary, $color-secondary);
+  background: linear-gradient(45deg, $color-primary, $color-secondary);
+}
+
 *{
   font-family: 'Heebo', sans-serif;
   padding: 0;
@@ -14,4 +38,32 @@ ul{
 }
 main{
   width: 100%;
+}
+
+.btn{
+  color:white;
+  cursor: pointer;
+  background-color: #0d9bee;
+  box-shadow: $shadow;
+  width: 100%;
+  padding: $box-padding;
+  border-radius: 2em;
+
+  &:hover{
+    @include main-gradient;
+    color:  #fff;
+    box-shadow: 0px 5px 5px rgba(0,0,0,.125);
+    animation-name: button-hover;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.38,.38,.12,.96);
+  }
+}
+
+@keyframes button-hover {
+  100%{
+      @include main-gradient;
+      color: $color-neutral-lt;
+      border-radius: 0px;
+  }
 }
