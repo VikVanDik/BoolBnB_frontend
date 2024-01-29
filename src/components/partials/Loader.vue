@@ -7,8 +7,8 @@ export default {
 
 <template>
   <div class="loader">
-    <h1>Loading....</h1>
-    <div class="lds-hourglass"></div>
+    <h1>Caricamento....</h1>
+    <img src="../../img/loader.gif" alt="" class="load">
 
   </div>
 </template>
@@ -16,7 +16,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .loader {
   h1 {
     margin-bottom: 20px;

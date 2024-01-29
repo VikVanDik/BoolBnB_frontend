@@ -18,6 +18,7 @@ export default {
       </div>
     </div>
     <div class="informations-container">
+      <img v-if="apartment.end_date" src="../../img/Sponsored.png" alt="" class="sponsor">
       <h2 class="title">{{apartment.title}}</h2>
       <p class="sub-title">{{ apartment.address }}</p>
       <div class=" card-subtitle text-secondary" :class="apartment.distance > 1 ? 'd-none' : ''">
@@ -148,7 +149,13 @@ $orange: #ec992c;
     }
 }
 
-
+.sponsor {
+  position: absolute;
+  z-index: 100;
+  width: 180px;
+  top: -6%;
+  left: 0;
+}
 
   .booking-card{
     position: relative;
