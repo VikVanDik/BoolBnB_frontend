@@ -12,7 +12,7 @@ export default {
 <li class="booking-card" v-bind:style="{ backgroundImage: 'url(' + apartment.img + ')' }">
     <div class="book-container">
       <div class="content">
-        <router-link class="btn" :to="{name:'ApartmentDetails',params:{slug:apartment.slug}}">
+        <router-link class="btn-card" :to="{name:'ApartmentDetails',params:{slug:apartment.slug}}">
           Info
         </router-link>
       </div>
@@ -206,12 +206,12 @@ $orange: #ec992c;
         
         transition: .3s;
         
-        .btn {      
+        .btn-card {      
           border: 3px solid white;
-          padding: 10px 15px;
-          
+          padding: 10px 20px;
+          text-decoration: none;
+          border-radius: 10px;
           background: none;
-          
           text-transform: uppercase;
           font-weight: bold;
           font-size: 1.3em;

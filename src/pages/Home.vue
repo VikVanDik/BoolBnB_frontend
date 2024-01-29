@@ -133,9 +133,9 @@ export default {
       </div>
 
     <!-- barra di ricerca -->
-      <div class="container d-flex justify-content-center position-relative">
-        <form @submit.prevent="sendAddress(store.toSearch)" class="form-inline row w-75">
-          <div class="d-flex col">
+      <div class="container d-flex justify-content-center ">
+        <form @submit.prevent="sendAddress(store.toSearch)" class="form-inline row w-75 ">
+          <div class="d-flex col-10 p-0 position-relative">
             <input 
             class="form-control w-100"
             type="search" 
@@ -143,13 +143,17 @@ export default {
             v-model="store.toSearch"
             @keyup="autocomplete(store.toSearch)"
             required>
+            <AutoComplete class="autocomplete"/>
+          </div>
+          <div class="col-2 px-1">
             <button type="submit"
-            class="btn btn-primary">
+            class="btn btn-primary d-flex justify-content-center align-items-center ">
               <span class="d-none d-md-block"> cerca</span>
               <i class="fa-solid fa-magnifying-glass d-block d-md-none"></i>
             </button>
+
           </div>
-          <AutoComplete class="autocomplete"/>
+          
         </form>
       </div>
     </div>
@@ -179,8 +183,8 @@ export default {
             </ul>
 
             <nav class='nav position-absolute'>
-              <ion-icon class='btn prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left prev"></i></ion-icon>
-              <ion-icon class='btn next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right next"></i></ion-icon>
+              <ion-icon class='btn-slider prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left prev"></i></ion-icon>
+              <ion-icon class='btn-slider next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right next"></i></ion-icon>
             </nav>
           </div>
           <!-- <Card v-for="apartment in store.apartments" :key="apartment.id" :apartment="apartment"/> -->
@@ -191,8 +195,10 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .autocomplete{
   padding: 0;
+  top:51px;
 }
 
 .main-cn{
@@ -223,11 +229,10 @@ export default {
   }
 
   .results{
-    margin: 40px 0 0 15px;
+
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.309);
     border-radius: 10px;
-    width: 40%;
     z-index: 500;
     .autocomplete{
       &:hover{
@@ -340,7 +345,7 @@ export default {
   z-index: 5;
   user-select: none;
 
-  & .btn {
+  & .btn-slider {
     background-color: rgba(255,255,255,0.5);
     display: block;
     color: rgba(0,0,0,0.7);

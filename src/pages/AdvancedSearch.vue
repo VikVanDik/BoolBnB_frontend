@@ -107,7 +107,7 @@ export default {
       <!-- indirizzo -->
       <div class="d-flex row mb-3">
         <span class="fw-bold mb-1">Inserisci indirizzo</span>
-        <div class="col-11 fw-bold">
+        <div class="col-10 fw-bold d-flex align-items-center position-relative">
           <input
             type="text"
             class="form-control"
@@ -117,16 +117,19 @@ export default {
             autocomplete="off"
             @keyup.enter="getAdvancedSearch()"/>
             <!-- Autocomplete -->
-
-            <AutoComplete v-if="store.isLoading" class="advanced-search"/>
-        </div>
+            <AutoComplete v-if="store.isLoading" class="autocomplete"/>
+          </div>
+          
 
 
         <!-- Button trigger offcanvas filter -->
-          <div class="btn btn-success col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <i class="fa-solid fa-filter me-2"></i>
-            <span>Filtri</span>
+        <div class="col-auto">
+          <div class="btn btn-success d-flex align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <i class="fa-solid fa-filter "></i>
+            <span class="d-none d-lg-block ps-2">Filtri</span>
           </div>
+          
+        </div>
 
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
@@ -211,9 +214,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.advanced-search {
+.autocomplete {
   margin: 0;
-
+  top: 45px;
 }
 
 .containter-card-searched{

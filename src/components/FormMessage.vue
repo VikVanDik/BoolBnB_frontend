@@ -27,7 +27,8 @@ export default {
   methods: {
     empyMessageForm(){
       this.success = false;
-      this.text = ''
+      this.text = '';
+      this.errors.text = [];
     },
     sendForm(){
       const data = {
@@ -106,6 +107,17 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.modal {
+  width: 100% !important;
+  .modal-dialog {
+    max-width: 500px !important;
+    .modal-content{
+      background-color: rgba(255, 255, 255, 0.954);
+    }
+  }
+
+}
 .fa-xmark{
   font-size: 1.4rem;
   &:hover {
@@ -120,7 +132,7 @@ export default {
 }
 
 form{
-  min-width: 500px;
+  width: 100%;
   border: 1px solid black;
   padding: 30px;
   border-radius: 10px;

@@ -29,15 +29,16 @@ export default{
 
 <style lang="scss" scoped>
 .results{
-
-    margin: 40px 0 0 15px;
+    width: 500px;
+    font-size: .8rem;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.309);
     border-radius: 10px;
-    width: 500px;
     z-index: 500;
     overflow: hidden;
     .autocomplete{
+      border: 1px solid rgba(128, 128, 128, 0.227);
+      margin: 0;
       padding:5px 10px;
       font-weight: 100;
       &:hover{
@@ -45,6 +46,16 @@ export default{
         cursor: pointer;
       }
     }
-
   }
+    @media (width > 576px) and (width < 992px) {
+      .results{
+        width: 400px;
+      }
+    }
+    @media (width < 576px) {
+      .results{
+        width: 250px;
+      }
+    
+    }
 </style>
