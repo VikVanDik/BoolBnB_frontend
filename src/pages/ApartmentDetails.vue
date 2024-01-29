@@ -70,7 +70,7 @@
 
           <!-- bottone -->
           <div class="button">
-            <FormMessage :apartment_id = "apartment.id"/>
+            <FormMessage :apartment_id = "apartment.id" :user_name="this.user_name"  :user_surname="this.user_surname"/>
           </div>
         </div>
         <!-- descrizione -->
