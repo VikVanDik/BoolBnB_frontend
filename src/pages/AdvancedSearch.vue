@@ -105,9 +105,9 @@ export default {
     <div class="container bg-img pt-2">
       <!-- Indirizzo e chilometri -->
       <!-- indirizzo -->
-      <div class="d-flex row mb-3">
+      <div class="d-flex row mb-3 justify-content-evenly">
         <span class="fw-bold mb-1">Inserisci indirizzo</span>
-        <div class="col-10 fw-bold d-flex align-items-center position-relative">
+        <div class="col-8 col-md-10 fw-bold d-flex align-items-center position-relative">
           <input
             type="text"
             class="form-control"
@@ -118,7 +118,7 @@ export default {
             @keyup.enter="getAdvancedSearch()"/>
             <!-- Autocomplete -->
             <AutoComplete v-if="store.isLoading" class="autocomplete"/>
-          </div>
+        </div>
           
 
 
