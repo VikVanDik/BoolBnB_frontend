@@ -167,8 +167,8 @@ form{
 }
 $shadow: 0px 3px 10px rgba(0,0,0,.10);
 $box-padding: .8em;
-$color-primary: #f857a8;
-$color-secondary:#ff5858;
+$color-primary: #4b82c0;
+$color-secondary:#0d2b90;
 $color-neutral-lt: #fff;
 $color-neutral-med: #ddd;
 $headings-font: 'Saira Semi Condensed', sans-serif;

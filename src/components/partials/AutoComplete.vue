@@ -29,7 +29,7 @@ export default{
 
 <style lang="scss" scoped>
 .results{
-    width: 500px;
+    width: 100%;
     font-size: .8rem;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.309);

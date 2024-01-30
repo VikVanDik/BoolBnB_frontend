@@ -217,6 +217,7 @@ export default {
 .autocomplete {
   margin: 0;
   top: 45px;
+  width: 98%;
 }
 
 .containter-card-searched{
