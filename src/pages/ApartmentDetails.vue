@@ -2,10 +2,12 @@
   import axios  from 'axios';
   import { store } from '../data/store';
   import FormMessage from '../components/FormMessage.vue';
+  import Map from '../components/partials/Map.vue';
   export default {
     name:'ApartmentDetails',
     components:{
-      FormMessage
+      FormMessage,
+      Map
     },
 
     data(){
@@ -37,7 +39,6 @@
     mounted(){
       this.slug = this.$route.params.slug;
       this.getSingleProject(this.slug);
-      
     }
   }
   </script>
@@ -59,9 +60,9 @@
             <!-- indirizzo e info -->
             <div class="address">
               <h3 class="mt-4">Indirizzo : {{ apartment.address }} </h3>
-              <span> {{apartment.room_number }} stanze &#9675;</span>
-              <span> {{apartment.bed_number }} camere da letto &#9675;</span>
-              <span> {{apartment.bathroom_number }} bagni &#9675;</span>
+              <span> {{apartment.room_number ==  1 ? apartment.room_number + " stanza" : apartment.room_number+ ' stanze'}} &#9675;</span>
+              <span> {{apartment.bed_number ==  1 ? apartment.bed_number + " posto letto" : apartment.bed_number+ ' posti letto'}} &#9675;</span>
+              <span> {{apartment.bathroom_number ==  1 ? apartment.bathroom_number + " bagno" : apartment.bathroom_number+ ' bagni'}} &#9675;</span>
               <span> {{apartment.sq_metres }} metri quadri</span>
             </div>
 
@@ -122,7 +123,7 @@
                   <div class="card">
                     <div class="card-body">
                       <i class="fa-solid fa-bed me-1"></i>
-                      <h6 class="card-title my-3">Camere da letto nell' appartamento</h6>
+                      <h6 class="card-title my-3">Posti letto nell' appartamento</h6>
                       <h6 class="card-subtitle mb-2 text-body-secondary">{{apartment.bed_number }}</h6>
                     </div>
                   </div>
@@ -152,6 +153,10 @@
             </div>
 
             <h3 class="mt-4">Dove ti troverai</h3>
+
+            <div class="map">
+              <Map :latitude="apartment.lat"  :longitude="apartment.lon"/>
+            </div>
 
           </div>
           <!-- fine colonna sinistra  -->
@@ -196,6 +201,9 @@ i {
     width: 50px;
   }
 
-  
+  .map {
+    width: 100%;
+    height: 300px;
+  }
   
 </style>
