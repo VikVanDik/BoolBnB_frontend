@@ -16,12 +16,12 @@ export default {
 
 <template>
 
-<div class="container">
+<div class="container-custom ">
   <h1 class="text-center py-5">Contatti</h1>
-  <div class="row">
+  <div class="row row-cols-">
 
     <div 
-      class="col-4 custom-card"
+      class="col-sm-12  col-4  custom-card"
       v-for="(member, index) in store.team"
       :key="index"
     >
@@ -70,8 +70,9 @@ export default {
 .container-custom {
   width: 90%;
   margin: 0 auto;
-
-
+  max-width: 1500px;
+  min-width: 576px;
+  margin-bottom: 60px;
 }
 .clearfix {
   content: '';
@@ -82,7 +83,7 @@ export default {
 .custom-card {
   display: flex;
   border: 1px solid black;
-  margin: 35px 15px;
+  margin: 20px 15px;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 25px;
@@ -91,6 +92,7 @@ export default {
   transition: all 0.2s ease-in-out;
   text-align: center;
   width: 31%;
+  min-width: 400px;
   cursor: pointer;
 }
 .custom-card li:after,
@@ -105,7 +107,7 @@ export default {
   height: 110px;
   border: 1px solid black;
   overflow: hidden;
-  max-width: 110px;
+  min-width: 110px;
   float: left;
   border-radius: 50%;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -121,7 +123,7 @@ export default {
   text-align: left;
   transition: all 0.5s ease-in-out;
   text-shadow: 1px 1px rgba(0, 0, 0, 0);
-  max-width: 250px;
+  width: 250px;
 
 }
 .details > span,
@@ -182,35 +184,39 @@ export default {
   transition: all 0.5s ease-in-out;
   text-shadow: 1px 1px #dfe295;
 }
-@media (max-width: 550px) {
-  .cards li {
+@media (max-width: 980px) {
+
+
+  .custom-card {
     display: block;
-    width: auto;
-    max-width: 200px;
-    margin: 30px auto;
-  }
-  .cards li img,
-  .cards li .details {
-    float: none;
-  }
-  .cards li img {
-    margin: 0 auto;
-  }
-  .cards li .details {
-    margin-top: 20px;
-    text-align: center;
-    min-width: 0;
-  }
-  .cards li .details span,
-  .cards li .details a {
-    padding: 0;
-    white-space: break-all;
-    word-wrap: break-word;
-  }
-  .cards li .details span:before,
-  .cards li .details a:before {
-    display: none;
+    width: 500px;
+    max-width: 520px;
+    min-width: 500px;
+    margin: 20px auto;
   }
 }
+//   .custom-card img,
+//   .custom-card .details {
+//     float: none;
+//   }
+//   .custom-card img {
+//     margin: 0 auto;
+//   }
+//   .custom-card .details {
+//     margin-top: 20px;
+//     text-align: center;
+//     min-width: 0;
+//   }
+//   .custom-card .details span,
+//   .custom-card .details a {
+//     padding: 0;
+//     white-space: break-all;
+//     word-wrap: break-word;
+//   }
+//   .cards li .details span:before,
+//   .cards li .details a:before {
+//     display: none;
+//   }
+// }
 
 </style>
