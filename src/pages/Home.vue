@@ -47,6 +47,13 @@ export default {
         });
     },
 
+    truncateString(str, length = 105) {
+      if (typeof str !== "string" || typeof length !== "number") return str
+      return str.length > length ? str.substring(0, length - 1) + "..." : str
+    },
+
+
+
     autocomplete(toSearch) {
       store.autocomplete = [];
       axios.get(`https://api.tomtom.com/search/2/search/${toSearch}.json?key=mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX&language=it-IT&idxSets=Str&countrySet=IT&typeahead=true`)
@@ -76,7 +83,6 @@ export default {
         secondItem.classList.remove('d-none');
         thirdItem.classList.remove('d-none');
         fourthItem.classList.remove('d-none');
-        fifthItem.classList.remove('d-none');
         this.show = false;
         
       }, 0);
@@ -164,11 +170,11 @@ export default {
         <div class="d-flex w-100 flex-wrap justify-content-center">
           <div class="position-relative">
             <ul class='slider'>
-              <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 5 : 'index'">
+              <li v-for="(apartment, index) in store.apartments" :key="apartment.id" class='item' :style="{ backgroundImage: 'url(' + apartment.img + ')' }" v-show="($data.show)? index < 4 : 'index'">
 
                 <div class='content pe-3'>
                   <h2 class='title'>{{apartment.title}}</h2>
-                  <p class='description' v-html="apartment.description"></p>
+                  <p class='description' v-html="truncateString(apartment.description)"></p>
                   <a :href="'get-apartment/' +  apartment.slug">
                     <button>
                       Vai all'appartamento
