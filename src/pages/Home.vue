@@ -188,9 +188,9 @@ export default {
               </li>
             </ul>
 
-            <nav class='nav position-absolute'>
-              <ion-icon class='btn-slider prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left prev"></i></ion-icon>
-              <ion-icon class='btn-slider next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right next"></i></ion-icon>
+            <nav class='nav position-absolute d-flex '>
+              <ion-icon class='btn prev' name="arrow-back-outline"><i class="fa-solid fa-arrow-left prev"></i></ion-icon>
+              <ion-icon class='btn next' name="arrow-forward-outline"><i class="fa-solid fa-arrow-right next"></i></ion-icon>
             </nav>
           </div>
           <!-- <Card v-for="apartment in store.apartments" :key="apartment.id" :apartment="apartment"/> -->
@@ -201,6 +201,8 @@ export default {
 
 
 <style lang="scss" scoped>
+ 
+ 
 
 .autocomplete{
   padding: 0;
@@ -350,21 +352,15 @@ export default {
   transform: translateX(-50%);
   z-index: 5;
   user-select: none;
-
-  & .btn-slider {
-    background-color: rgba(255,255,255,0.5);
-    display: block;
-    color: rgba(0,0,0,0.7);
-    border: 2px solid rgba(0,0,0,0.6);
-    margin: 0.5px;
-    padding:0.75px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba(145, 145, 145, 0.329);
-    }
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  .btn{
+    width: 40px;
+    padding: 2px;
   }
-}
+ }
+
 
 @media (width > 650px) and (width < 900px) {
     .content {

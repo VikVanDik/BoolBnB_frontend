@@ -17,8 +17,8 @@ export default {
 <template>
 
 <div class="container-custom ">
-  <h1 class="text-center py-5">Contatti</h1>
-  <div class="row row-cols-">
+  <h1 class="py-5 text-center">Contatti</h1>
+  <div class="row justify-content-center">
 
     <div 
       class="col-sm-12  col-4  custom-card"
@@ -71,7 +71,6 @@ export default {
   width: 90%;
   margin: 0 auto;
   max-width: 1500px;
-  min-width: 576px;
   margin-bottom: 60px;
 }
 .clearfix {
@@ -92,7 +91,6 @@ export default {
   transition: all 0.2s ease-in-out;
   text-align: center;
   width: 31%;
-  min-width: 400px;
   cursor: pointer;
 }
 .custom-card li:after,
@@ -148,12 +146,12 @@ export default {
   color: #444;
 }
 .details a {
-  color: #57893c;
+  color: #3c4689;
   transition: color 0.5s ease-in-out;
 }
 .details a:hover,
 .details a:focus {
-  color: #97c77e;
+  color: #7e91c7;
   transition: color 0.5s ease-in-out;
 }
 .details .name {
@@ -172,7 +170,7 @@ export default {
   content: "\f08c";
 }
 .custom-card:hover {
-  background: rgba(235, 237, 189, 0.5);
+  background: rgba(191, 189, 237, 0.5);
   transition: all 0.2s ease-in-out;
   transform: scale(1.03);
 }
@@ -182,19 +180,36 @@ export default {
 }
 .custom-card:hover .details {
   transition: all 0.5s ease-in-out;
-  text-shadow: 1px 1px #dfe295;
+  text-shadow: 1px 1px #b09af1;
 }
+
+
 @media (max-width: 980px) {
-
-
+  
+  
   .custom-card {
     display: block;
     width: 500px;
-    max-width: 520px;
-    min-width: 500px;
-    margin: 20px auto;
   }
 }
+  @media (max-width: 450px) {
+  
+  .container-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .custom-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    .img-holder{
+      margin-bottom: 10px;
+    }
+  }
+  }
+
 //   .custom-card img,
 //   .custom-card .details {
 //     float: none;
