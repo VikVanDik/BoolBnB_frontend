@@ -1,7 +1,14 @@
 <script>
-import {onMounted, onUpdated, reactive, ref } from 'vue'
+import {onMounted, onUpdated, reactive, ref } from 'vue';
+import {store} from "../../data/store.js";
+
 export default {
   name:'Map',
+  data(){
+    return {
+      store,
+    }
+  },
   props: {
     latitude:String,
     longitude:String,
@@ -10,15 +17,15 @@ export default {
   setup() {
          const mapRef = ref(null)
  
-         onMounted(() => {
+         onUpdated(() => {
             
              const tt = window.tt;
-             const focus = { lat:"41.1111111", lng:"41.2222222" }
+            const focus = { lat:store.lat, lng:store.lon }
  
              var map = tt.map({
                  key: 'mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX',
                  container: mapRef.value,
-                 center: focus,
+                center: focus, 
                  zoom: 15
              })
  
@@ -34,14 +41,13 @@ export default {
             mapRef
         }
     },
-
-
-  data() {
-    return{
-     
-   }
-
-  },
+  // mounted() {
+    
+  //     const focus = { lat:store.lat, lng:store.lon } 
+  //     window.map.setCenter(focus);
+      
+    
+  // }
 
 
 }

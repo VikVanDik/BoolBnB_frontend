@@ -15,11 +15,14 @@
         slug:'', 
         apartment:{},
         user_name:'',
-        user_surname:''
+        user_surname:'',
+        store,
       }
     },
     methods: {
       getSingleProject(slug){
+        store.lon = null;
+        store.lat = null;
         axios.get(store.apiUrl + 'apartments/get-apartment/' + slug)
       .then(response => {
         console.log(response.data.success);
@@ -28,6 +31,8 @@
           this.$router.push({ name: 'Error404' })
         }
         this.apartment = response.data.apartment;
+        store.lon = response.data.apartment.lon;
+        store.lat = response.data.apartment.lat;
         this.user_name = response.data.apartment.user.name;
         this.user_surname = response.data.apartment.user.surname;
 
