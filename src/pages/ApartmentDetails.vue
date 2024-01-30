@@ -51,16 +51,37 @@
 
 <template>
     <div class="container my-5 py-5">
-      <h2 class="mb-4">Appartamento: {{ apartment.title }} </h2>
-      <div class="d-flex flex-column">
-        <div class="me-5 w-75">
-          <img :src="apartment.img" :alt="apartment.title" class="w-100">
+      <div class="row w-100 h-100">
+        <div class="col h-100 col-lg-8 img-house ">
+          <h2 class="mb-4">Appartamento: {{ apartment.title }} </h2>
+          <img :src="apartment.img" :alt="apartment.title" class="img-fluid">
         </div>
+         <!-- map -->
+         <div class="col-lg-4 d-flex flex-column">
+              <h3 class="mb-4">Dove ti troverai</h3>
+              <div class="map">
+                <Map :latitude="apartment.lat"  :longitude="apartment.lon"/>
+              </div>
+              
+              <div class="card mt-3" >
+                <div class="card-body text-center">
+                  <h5 class="card-title">Chiedi informazioni all' host</h5>
+                  <p class="card-text">Di solito l' host risponde entro 3 hr</p>
+                  <div class="button  ">
+                    <FormMessage :apartment_id = "apartment.id" :user_name="this.user_name"  :user_surname="this.user_surname"/>
+                  </div>
+                </div>
+            
+            
+              </div>
+            </div>
+      </div>
+      <div class="d-flex flex-column">
 
         <div class="row">
           <!-- info appartamento -->
           <!-- colonna di sinistra -->
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-lg-7">
             
             <!-- indirizzo e info -->
             <div class="address">
@@ -157,36 +178,43 @@
               
             </div>
 
-            <h3 class="mt-4">Dove ti troverai</h3>
-
-            <div class="map">
-              <Map :latitude="apartment.lat"  :longitude="apartment.lon"/>
-            </div>
 
           </div>
           <!-- fine colonna sinistra  -->
-
-          <div class="col-auto">
-            <div class="card" >
-              <div class="card-body">
-                <h5 class="card-title">Chiedi informazioni all' host</h5>
-                <p class="card-text">Di solito l' host risponde entro 3 hr</p>
-                <div class="button">
-                  <FormMessage :apartment_id = "apartment.id" :user_name="this.user_name"  :user_surname="this.user_surname"/>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          
+           
         </div>
         
-          <!-- bottone -->
+        <!-- bottone -->
+       
       </div>
     </div>
 
 </template>
 
 <style lang="scss" scoped>
+
+
+.card {
+  background-color: rgba(197, 196, 196, 0.213);
+}
+.ranking-host {
+  p {
+    color: gray;
+  }
+}
+.address {
+  span {
+    color: gray;
+  }
+}
+
+.host {
+  p {
+    color: gray;
+  }
+}
+
 i {
   color:rgb(75, 130, 192);
   font-size: 25px;
@@ -210,5 +238,5 @@ i {
     width: 100%;
     height: 300px;
   }
-  
+
 </style>

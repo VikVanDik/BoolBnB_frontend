@@ -14,25 +14,28 @@ export default {
     longitude:String,
   },
 
+
   setup() {
          const mapRef = ref(null)
  
          onUpdated(() => {
             
              const tt = window.tt;
-            const focus = { lat:store.lat, lng:store.lon }
+             const focus = { lat:store.lat, lng:store.lon }
+             
  
              var map = tt.map({
                  key: 'mqY8yECF75lXPuk7LVSI3bFjFtyEAbEX',
                  container: mapRef.value,
-                center: focus, 
+                 center: focus, 
                  zoom: 15
              })
  
              map.addControl(new tt.FullscreenControl()); 
              map.addControl(new tt.NavigationControl()); 
- 
-             window.map = map
+             var marker = new tt.Marker().setLngLat(focus).addTo(map); 
+              window.map = map
+              
  
              // insertLocs(map)
         })
@@ -40,28 +43,20 @@ export default {
         return {
             mapRef
         }
-    },
-  // mounted() {
-    
-  //     const focus = { lat:store.lat, lng:store.lon } 
-  //     window.map.setCenter(focus);
-      
-    
-  // }
-
-
-}
+    }
+  }
 </script>
 
 
 <template>
-  <h1 > {{ latitude + ' ' + longitude}}</h1>
   <div ref="mapRef" id="map"></div>
 </template>
 
 
 <style lang="scss" scoped>
  #map {
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: visible;
  }
