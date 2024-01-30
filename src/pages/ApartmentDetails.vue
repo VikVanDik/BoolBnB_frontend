@@ -51,14 +51,14 @@
 
 <template>
     <div class="container my-5 py-5">
-      <div class="row w-100 h-100">
-        <div class="col h-100 col-lg-8 img-house ">
-          <h2 class="mb-4">Appartamento: {{ apartment.title }} </h2>
-          <img :src="apartment.img" :alt="apartment.title" class="img-fluid">
+      <div class="row">
+        <div class="col-lg-8 h-100 img-house ">
+          <h2 class="mt-3 mb-4">Appartamento: {{ apartment.title }} </h2>
+          <img :src="apartment.img" :alt="apartment.title" class="img-fluid h-100">
         </div>
-         <!-- map -->
-         <div class="col-lg-4 d-flex flex-column">
-              <h3 class="mb-4">Dove ti troverai</h3>
+            <!-- map -->
+            <div class="col-lg-4 h-100 d-flex flex-column">
+              <h3 class="mt-3 mb-4">Dove ti troverai</h3>
               <div class="map">
                 <Map :latitude="apartment.lat"  :longitude="apartment.lon"/>
               </div>
@@ -71,12 +71,10 @@
                     <FormMessage :apartment_id = "apartment.id" :user_name="this.user_name"  :user_surname="this.user_surname"/>
                   </div>
                 </div>
-            
-            
               </div>
+
             </div>
       </div>
-      <div class="d-flex flex-column">
 
         <div class="row">
           <!-- info appartamento -->
@@ -179,21 +177,23 @@
             </div>
 
 
-          </div>
-          <!-- fine colonna sinistra  -->
+        </div>
+        <!-- fine colonna sinistra  -->
           
            
-        </div>
-        
-        <!-- bottone -->
-       
       </div>
+   
+     
     </div>
 
 </template>
 
 <style lang="scss" scoped>
-
+.img-house {
+  img {
+    min-height: 490px;
+  }
+}
 
 .card {
   background-color: rgba(197, 196, 196, 0.213);
