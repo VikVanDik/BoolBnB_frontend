@@ -180,7 +180,7 @@ export default {
                 <!-- Servizi -->
                 <div class="mb-5">
                   <fieldset class="checkbox-group">
-                    <legend class="checkbox-group-legend">Choose your favorites</legend>
+                    <legend class="checkbox-group-legend">Selezione servizi</legend>
                     <div v-for="service in store.services" :key="service.id" class="checkbox">
                       <label class="checkbox-wrapper">
                         <input type="checkbox" class="checkbox-input"

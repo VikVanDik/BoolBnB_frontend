@@ -166,7 +166,7 @@ export default {
 
     <!-- appartamenti sponsorizzati -->
     <div class="container p-5"> 
-        <h2 id="sponsor-title" class="text-center">Appartamenti Sponsorizzati</h2>
+        <h2 id="sponsor-title" class="text-center">Appartamenti in evidenza</h2>
         <div class="d-flex w-100 flex-wrap justify-content-center">
           <div class="position-relative">
             <ul class='slider'>
