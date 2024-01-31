@@ -43,6 +43,6 @@ export default{
   min-height: calc(100vh - 280px - 80px);
 }
 .h-footer{
-  height: 280px;
+  min-height: 280px;
 }
 </style>
