@@ -4,6 +4,11 @@ export default {
   props: {
     apartment:Object,
   },
+  data() {
+    return {
+      formattedToday: new Date().toISOString().slice(0, 19).replace('T', ' '),
+    };
+  },
 }
 </script>
 
@@ -18,7 +23,7 @@ export default {
       </div>
     </div>
     <div class="informations-container">
-      <img v-if="apartment.end_date" src="../../img/Sponsored.png" alt="" class="sponsor">
+      <img v-if="apartment.end_date > formattedToday" src="../../img/Sponsored.png" alt="" class="sponsor">
       <h2 class="title">{{apartment.title}}</h2>
       <p class="sub-title">{{ apartment.address }}</p>
       <div class=" card-subtitle text-secondary" :class="apartment.distance > 1 ? 'd-none' : ''">
