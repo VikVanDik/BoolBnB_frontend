@@ -16,6 +16,7 @@ export const store = reactive({
   team:[
     {
       name: 'Asia Viscardi',
+      img:'/asia-linkedin.jpg',
       contacts:[
         {
           mail:'asia.viscardii@gmail.com',
@@ -26,6 +27,7 @@ export const store = reactive({
     },
     {
       name: 'Alessandro Cingolani',
+      img:'/alessandro-linkedin.jpg',
       contacts:[
         {
           mail:'cingolani.alessandro93@gmail.com',
@@ -36,6 +38,7 @@ export const store = reactive({
     },
     {
       name: 'Argel Dela Cruz',
+      img:'/argel-linkedin.jpg',
       contacts:[
         {
           mail:'argeldelacruz86@gmail.com',
@@ -46,6 +49,7 @@ export const store = reactive({
     },
     {
       name: 'Emanuele Di Leo',
+      img:'/emanuele-linkedin.jpg',
       contacts:[
         {
           mail:'dileoemanuele11@gmail.com',
@@ -56,6 +60,7 @@ export const store = reactive({
     },
     {
       name: 'Vincenzo Li Calzi',
+      img:'/vincenzo-linkedin.JPG',
       contacts:[
         {
           mail:'a95vlc17@gmail.com',
@@ -66,6 +71,7 @@ export const store = reactive({
     },
     {
       name: 'Carmelo Cammalleri',
+      img:'/carmelo-linkedin.jpg',
       contacts:[
         {
           mail:'carmecamma1995@gmail.com',
