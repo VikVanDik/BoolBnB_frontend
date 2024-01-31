@@ -42,7 +42,8 @@ export default{
       padding:5px 10px;
       font-weight: 100;
       &:hover{
-        background-color: aqua;
+        color: white;
+        background-color: #4b82c0;
         cursor: pointer;
       }
     }

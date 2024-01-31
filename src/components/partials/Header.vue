@@ -22,14 +22,14 @@ export default{
     </button>
 
 
-    <div class="offcanvas offcanvas-top h-50" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="background-color: #4b82c0;">
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="background-color: #4b82c0;">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title text-white" id="offcanvasTopLabel">BoolMenu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
 
       <div class="offcanvas-body">
-        <ul>
+        <ul >
           <li>
             <router-link class="fs-3 text-white" :to="{name: 'home'}">Home</router-link>
           </li>
@@ -39,7 +39,18 @@ export default{
           <li>
             <router-link class="fs-3 text-white" :to="{name: 'contacts'}">Contatti</router-link>
           </li>
+          
         </ul>
+        <div class="d-flex mt-2 fs-6">
+          <a class="text-decoration-none" href="http://127.0.0.1:8000/login">
+            <i class="fa-solid fa-right-to-bracket fa-lg text-white"></i>
+            <p class=" m-0 fs-6 text-white">Accedi</p>
+          </a>
+          <a class="ps-3 text-decoration-none" href="http://127.0.0.1:8000/register">
+            <i class="fa-solid fa-pen-to-square fa-lg text-white"></i>
+            <p class=" m-0 fs-6 text-white">Registrati</p>
+          </a>
+        </div>
       </div>
 
     </div>
