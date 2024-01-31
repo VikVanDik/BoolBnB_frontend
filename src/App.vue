@@ -25,9 +25,9 @@ export default{
   <div class="total-view">
     <Header/>
     <main class="scroll-view">
-      <RouterView class="h-100"/>
+      <RouterView class="h-view"/>
     </main>
-    <Footer/>
+    <Footer class="h-footer"/>
   </div>
 </template>
 
@@ -38,5 +38,11 @@ export default{
 }
 .scroll-view{
   margin-top: 80px;
+}
+.h-view{
+  min-height: calc(100vh - 280px - 80px);
+}
+.h-footer{
+  height: 280px;
 }
 </style>

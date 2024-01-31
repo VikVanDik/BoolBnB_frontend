@@ -105,7 +105,7 @@ export default {
     <div class="container bg-img pt-2">
       <!-- Indirizzo e chilometri -->
       <!-- indirizzo -->
-      <div class="d-flex row mb-3 justify-content-evenly">
+      <div class="d-flex row my-3 justify-content-between ">
         <span class="fw-bold mb-1">Inserisci indirizzo</span>
         <div class="col-8 col-md-10 fw-bold d-flex align-items-center position-relative">
           <input
