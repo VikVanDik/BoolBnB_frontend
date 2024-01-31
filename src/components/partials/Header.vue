@@ -64,13 +64,13 @@ export default{
   <div class="profile d-none d-md-block">
     <ul class="d-flex justify-content-end h-100 align-items-center">
       <li class="text-center pe-2">
-        <a href="http://127.0.0.1:8000/login" target="_blank">
+        <a href="http://127.0.0.1:8000/login">
           <i class="fa-solid fa-right-to-bracket fa-lg text-white"></i>
           <p class=" m-0 fs-6 text-white">Accedi</p>
         </a>
       </li>
       <li class="text-center">
-        <a href="http://127.0.0.1:8000/register" target="_blank">
+        <a href="http://127.0.0.1:8000/register">
           <i class="fa-solid fa-pen-to-square fa-lg text-white"></i>
           <p class=" m-0 fs-6 text-white">Registrati</p>
         </a>
