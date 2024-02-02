@@ -29,26 +29,35 @@ export default{
       </div>
 
       <div class="offcanvas-body">
-        <ul >
-          <li>
+        <ul class="w-100">
+          <li class="d-flex align-items-center">
+            <div class="w-custom">
+              <i class="fa-solid fa-house me-3 fs-3 text-white"></i>
+            </div>
             <router-link class="fs-3 text-white" :to="{name: 'home'}">Home</router-link>
           </li>
-          <li>
+          <li class="d-flex align-items-center">
+            <div class="w-custom">
+              <i class="fa-solid fa-circle-question me-3 fs-3 text-white"></i>
+            </div>
             <router-link class="fs-3 text-white" :to="{name: 'infoBoolbnb'}">Chi siamo</router-link>
           </li>
-          <li>
+          <li class="d-flex align-items-center">
+            <div class="w-custom">
+              <i class="fa-solid fa-address-card me-3 fs-3 text-white"></i>
+            </div>
             <router-link class="fs-3 text-white" :to="{name: 'contacts'}">Contatti</router-link>
           </li>
           
         </ul>
-        <div class="d-flex mt-2 fs-6">
+        <div class="d-flex mt-4 pt-2 fs-6 float-end">
           <a class="text-decoration-none" href="http://127.0.0.1:8000/login">
             <i class="fa-solid fa-right-to-bracket fa-lg text-white"></i>
-            <p class=" m-0 fs-6 text-white">Accedi</p>
+            <span class=" m-1 fs-6 text-white"> Accedi</span>
           </a>
           <a class="ps-3 text-decoration-none" href="http://127.0.0.1:8000/register">
             <i class="fa-solid fa-pen-to-square fa-lg text-white"></i>
-            <p class=" m-0 fs-6 text-white">Registrati</p>
+            <span class=" m-1 fs-6 text-white">Registrati</span>
           </a>
         </div>
       </div>
@@ -92,6 +101,10 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+
+  .w-custom{
+    width: 40px;
+  }
   header{
     width: 100%;
     height: 80px;
@@ -121,7 +134,6 @@ export default{
         a{
           text-decoration: none;
           color: black; 
-          width: 50px;
           &.active{
             border-bottom: 3px solid rgb(169, 230, 248);
           }
