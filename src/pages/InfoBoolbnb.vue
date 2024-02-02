@@ -7,7 +7,7 @@ export default {
 
 <template>
   <div class="bg-img">
-    <div class="container py-5">
+    <div class="container query-w py-5">
   
       <!-- section history -->
       <h1 class="text-center text-black mb-2">Progetto Boolbnb</h1>
@@ -28,7 +28,7 @@ export default {
           <p class=" m-0 text-center text-md-start space">Tutto ebbe inizio con sei brillanti menti: Asia, Argel, Alessandro, Carmelo, Emanuele e Vincenzo. Questo gruppo eterogeneo di programmatori appassionati, uniti dalla comune visione di creare qualcosa di straordinario, si incontrò casualmente durante un hackathon dedicato all'innovazione nel mondo del viaggio. Argel, un programmatore esperto con un occhio per il design intuitivo, Alessandro, un appassionato di esperienze di viaggio uniche, Carmelo, un genio del codice con un amore per la sostenibilità, Emanuele, un programmatore appassionato di connessioni umane, Asia, una mente creativa con una passione per le tecnologie emergenti, e Vincenzo, un esperto di algoritmi con una visione globale, si trovarono condividendo la stessa ambizione: reinventare il modo in cui il mondo vive le sue avventure. Durante una sessione di brainstorming intensiva, emerse un'idea rivoluzionaria: creare una piattaforma che connettesse viaggiatori con host autentici offrendo non solo alloggi, ma un'esperienza unica. Nacque così BoolBnB. Il team di programmatori si immerse nel progetto con zelo, sviluppando la piattaforma passo dopo passo. Ognuno contribuì con la propria esperienza, creando una fusione di competenze che si rifletteva nella diversità di BoolBnB. Attraverso sfide tecnologiche, notti bianche di codifica e momenti di ispirazione collettiva, BoolBnB prese forma. La piattaforma divenne un rifugio digitale dove storie, culture e persone si intrecciavano in un'esperienza di viaggio unica. La storia di BoolBnB era stata scritta.</p>
         </div>
         <div class="img-container d-flex justify-content-center ms-md-3">
-          <img src="../img/viaggi.jpg" class="w-100" alt="viaggi">
+          <img src="../img/viaggi.jpg" class="h-100" alt="viaggi">
         </div>
       </section>
       
@@ -37,9 +37,12 @@ export default {
         
         <div class="w-100">
           <h4 class=" fw-bold pb-4" >Il team 2</h4>
+          <div class="img-container w-100 overflow-hidden">
+            <img src="../img/team-2-1.png" class="w-100" alt="team2">
+          </div>
           <p class="m-0 space">In una tranquilla giornata estiva, sei appassionati di tecnologia provenienti da diverse parti del mondo si sono ritrovati in una aula illuminata dal caldo bagliore dei computer portatili. Il luogo era il corso "Boolean", un'intensa esperienza di formazione dedicata all'arte dello sviluppo software. Asia, Argel, Alessandro, Carmelo, Emanuele e Vincenzo, ognuno con la propria esperienza e passione per il codice, si trovarono casualmente assegnati al Team 2. Durante le lunghe sessioni di programmazione, il Team 2 non solo imparava gli uni dagli altri ma cresceva anche come amici. Le risate, le sfide risolte insieme e il sostegno reciproco li legarono in modo indissolubile. Mentre lavoravano al progetto assegnato dal corso Boolean, il Team 2 iniziò a fantasticare su idee più ampie, sognando di creare qualcosa di significativo al di là delle aule del corso. Il loro sogno prese forma quando, alla fine del corso Boolean, decisero di mettere insieme le loro abilità e la loro passione per creare BoolBnB, una piattaforma che avrebbe rivoluzionato il modo in cui le persone vivono e condividono le esperienze di viaggio. Da un'aula di corso a una squadra di sviluppatori impegnati in un progetto ambizioso, la storia del Team 2 diventò la storia di BoolBnB.</p>
           <div class="img-container w-100 overflow-hidden">
-            <img src="../img/team2.png" class="w-100" alt="team2">
+            <img src="../img/team-2-2.png" class="w-100" alt="team2">
           </div>
         </div>
       </section>
@@ -59,12 +62,23 @@ export default {
     background-color: #4b82c0b7;
     padding: 20px;
     border-radius: 20px;
-  
+    
     .img-container{
       border-radius: 10px;
       background-color: #c8cdffa2;
       overflow: hidden;
     }
+  }
+}
+
+@media(max-width: 5000px) {
+  .query-w {
+    width: 75%;
+  }
+}
+@media(max-width: 500px) {
+  .query-w {
+    width: 100%;
   }
 }
 </style>

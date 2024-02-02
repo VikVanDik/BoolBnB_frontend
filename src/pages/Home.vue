@@ -380,6 +380,9 @@ export default {
 }
 @media (width < 650px) {
 
+    .slider {
+      width: 87vw;
+    }
     .content {
 
       & .title        { font-size: 1rem; }
